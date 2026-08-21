@@ -36,7 +36,11 @@ docs/                Sitio final listo para publicar en GitHub Pages
   pages.yml          Deploy automático con GitHub Actions
 ```
 
-## Reemplazar IDs antes de producción
+## Integraciones de Google
+
+La configuración de producción vive en `data/site.json`. En este repositorio ya están cargados el token de Search Console, el ID de medición de GA4, el cliente de AdSense y los tres slots publicitarios de Código Error.
+
+Si el proyecto se migra a otra cuenta o propiedad, reemplaza esos valores en `data/site.json`:
 
 Edita `data/site.json`:
 
@@ -113,12 +117,12 @@ El generador creará automáticamente:
 
 ## Desplegar en GitHub Pages
 
-1. Crea el repositorio `codigo-error` en GitHub si aún no existe.
+1. Usa el repositorio `IAFUTURE10/CODIGOERROR`.
 2. Sube estos archivos a la rama `main`.
 3. En GitHub, ve a `Settings > Pages`.
 4. En `Build and deployment`, selecciona `GitHub Actions`.
 5. Ejecuta el workflow `Deploy Código Error to GitHub Pages` o empuja un cambio a `main`.
-6. Cuando termine, revisa `https://TU-USUARIO.github.io/codigo-error/`.
+6. Cuando termine, revisa `https://iafuture10.github.io/CODIGOERROR/`.
 
 También puedes publicar desde `docs/` usando la opción clásica de Pages, pero el workflow incluido es más seguro porque regenera y valida antes de desplegar.
 
@@ -132,16 +136,16 @@ Cuando la URL esté publicada:
 4. Envía este sitemap:
 
 ```text
-https://TU-USUARIO.github.io/codigo-error/sitemap-index.xml
+https://iafuture10.github.io/CODIGOERROR/sitemap-index.xml
 ```
 
 ## AdSense
 
-Antes de solicitar revisión o activar anuncios reales:
+Antes de solicitar revisión o activar anuncios reales en otra cuenta:
 
-1. Reemplaza `ca-pub-REEMPLAZAR`.
-2. Reemplaza `pub-0000000000000000` en `data/site.json`.
-3. Reemplaza los slots `REEMPLAZAR_SLOT_*`.
+1. Reemplaza el cliente `ca-pub`.
+2. Reemplaza el identificador `pub` usado para `ads.txt`.
+3. Reemplaza los tres slots publicitarios.
 4. Regenera el sitio para actualizar `ads.txt` y las etiquetas de anuncio.
 5. Mantén publicadas las páginas de privacidad, cookies, contacto y sobre el proyecto con datos reales.
 
@@ -154,7 +158,9 @@ python scripts/validate.py
 python -m http.server 8000 --directory docs
 ```
 
-Para GitHub Pages de proyecto, los enlaces se generan con `base_path: "/codigo-error"`. Si pruebas localmente y quieres enlaces desde raíz local, cambia temporalmente `base_path` a `""`, regenera y no publiques ese cambio si vas a usar `usuario.github.io/codigo-error`.
+Para GitHub Pages de proyecto, los enlaces se generan con `base_path: "/CODIGOERROR"`. Si pruebas localmente y quieres enlaces desde raíz local, cambia temporalmente `base_path` a `""`, regenera y no publiques ese cambio.
+
+AdSense consulta `ads.txt` en la raíz del host. Además del archivo generado dentro del proyecto, la cuenta publica `https://iafuture10.github.io/ads.txt` desde el repositorio raíz `IAFUTURE10/IAFUTURE10.github.io`.
 
 ## Copia para el Escritorio
 

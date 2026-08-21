@@ -31,6 +31,16 @@ def assert_contains(text: str, needle: str, path: Path) -> None:
 
 
 def main() -> None:
+    configured_values = [
+        SITE["verification"]["google_site_verification"],
+        SITE["analytics"]["ga4_measurement_id"],
+        SITE["adsense"]["client_id"],
+        SITE["adsense"]["publisher_id_for_ads_txt"],
+        *SITE["adsense"]["slots"].values(),
+    ]
+    if any("REEMPLAZAR" in value or value == "pub-0000000000000000" for value in configured_values):
+        raise AssertionError("Google service identifiers must be configured before production")
+
     if not (DOCS / "index.html").exists():
         raise AssertionError("docs/index.html was not generated")
     if not (DOCS / "sitemap-index.xml").exists():
@@ -121,6 +131,13 @@ def main() -> None:
         assert_contains(text, "<figcaption>", path)
         assert_contains(text, ".webp", path)
         assert_contains(text, 'loading="lazy"', path)
+        for image_tag in re.findall(r"<img\b[^>]*>", text):
+            if 'width="' not in image_tag or 'height="' not in image_tag:
+                raise AssertionError(f"{path} contains an image without stable dimensions")
+        assert_contains(text, SITE["adsense"]["client_id"], path)
+        assert_contains(text, SITE["adsense"]["slots"]["in_article"], path)
+        assert_contains(text, SITE["adsense"]["slots"]["sidebar"], path)
+        assert_contains(text, "(adsbygoogle = window.adsbygoogle || []).push({});", path)
         if len(re.findall(r"<h2", text)) < 4:
             raise AssertionError(f"{path} should contain multiple H2 headings")
         if len(re.findall(r"<h3", text)) < 2:

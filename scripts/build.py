@@ -736,15 +736,21 @@ figcaption {
 
 .ad-slot {
   margin: 28px 0;
-  min-height: 110px;
-  border: 1px dashed rgba(244, 248, 255, 0.24);
-  background: rgba(104, 106, 121, 0.10);
-  display: grid;
-  place-items: center;
-  border-radius: 8px;
-  color: #AAB7CC;
+  min-height: 280px;
+  overflow: hidden;
   text-align: center;
-  padding: 18px;
+}
+
+.ad-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #7F8CA3;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.ad-slot .adsbygoogle {
+  min-height: 250px;
 }
 
 .faq-item {
@@ -1113,15 +1119,21 @@ def search_component(
 
 def ad_block(slot: str = "in_article") -> str:
     slot_id = SITE["adsense"]["slots"][slot]
+    if slot == "in_article":
+        format_attributes = 'data-ad-layout="in-article" data-ad-format="fluid"'
+        ad_style = "display:block; text-align:center;"
+    else:
+        format_attributes = 'data-ad-format="auto" data-full-width-responsive="true"'
+        ad_style = "display:block"
     return f"""
-<aside class="ad-slot" aria-label="Espacio publicitario">
+<aside class="ad-slot ad-slot-{esc(slot)}" aria-label="Espacio publicitario">
+  <span class="ad-label">Publicidad</span>
   <ins class="adsbygoogle"
-       style="display:block"
+       style="{ad_style}"
        data-ad-client="{esc(SITE['adsense']['client_id'])}"
        data-ad-slot="{esc(slot_id)}"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <span>Espacio AdSense listo para reemplazar cliente y slot</span>
+       {format_attributes}></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({{}});</script>
 </aside>
 """.strip()
 
@@ -1157,7 +1169,7 @@ def article_card(article: dict) -> str:
     return f"""
 <article class="article-card">
   <a href="{route_url(article_route(article))}">
-    <img src="{asset_url(image)}" alt="{esc(article['caption'])}" loading="lazy" decoding="async">
+    <img src="{asset_url(image)}" alt="{esc(article['caption'])}" loading="lazy" decoding="async" width="640" height="360">
     <span class="pill">{esc(category['name'])}</span>
     <h3>{esc(article['title'])}</h3>
     <p>{esc(article['summary'])}</p>
@@ -1502,9 +1514,9 @@ def legal_pages() -> list[dict]:
             "h1": "Política de privacidad",
             "description": "Política de privacidad de Código Error con información sobre analítica, publicidad, cookies y contacto.",
             "body": [
-                ("Datos de navegación", "Código Error puede usar herramientas de analítica como Google Analytics 4 para entender uso agregado del sitio. Reemplaza el ID de medición antes de producción."),
-                ("Publicidad", "El sitio incluye espacios preparados para Google AdSense. Cuando configures tu cuenta, reemplaza el cliente ca-pub y los slots indicados en la documentación."),
-                ("Contacto", "Para solicitudes de privacidad, configura un correo real de contacto en esta página antes de publicar el sitio como proyecto comercial."),
+                ("Datos de navegación", "Código Error utiliza Google Analytics 4 para medir de forma agregada visitas, páginas consultadas, dispositivos y fuentes de tráfico. No se deben enviar datos personales dentro de códigos, búsquedas o formularios."),
+                ("Publicidad", "El sitio utiliza Google AdSense para gestionar espacios publicitarios. Google puede tratar datos técnicos y usar cookies conforme a las preferencias de consentimiento aplicables en cada región."),
+                ("Contacto", "Las solicitudes de privacidad, correcciones editoriales y avisos sobre contenido pueden enviarse mediante el canal público de incidencias del repositorio de Código Error."),
             ],
         },
         {
@@ -1514,8 +1526,8 @@ def legal_pages() -> list[dict]:
             "description": "Información sobre cookies técnicas, analítica y publicidad en Código Error.",
             "body": [
                 ("Cookies técnicas", "El sitio puede usar almacenamiento local para mejorar la búsqueda y preferencias básicas de navegación."),
-                ("Cookies de analítica", "Google Analytics puede instalar cookies de medición cuando reemplaces el ID GA4 y actives la propiedad."),
-                ("Cookies publicitarias", "Google AdSense puede usar cookies para medición y anuncios conforme a su propia política. Mantén esta página actualizada según tu configuración final."),
+                ("Cookies de analítica", "Google Analytics 4 puede utilizar cookies o señales equivalentes para medir visitas e interacción cuando la configuración de consentimiento lo permite."),
+                ("Cookies publicitarias", "Google AdSense puede usar cookies y otras señales para medición, prevención de fraude y personalización de anuncios según la región y las preferencias del visitante."),
             ],
         },
         {
@@ -1524,7 +1536,7 @@ def legal_pages() -> list[dict]:
             "h1": "Contacto",
             "description": "Página de contacto editorial para Código Error.",
             "body": [
-                ("Contacto editorial", "Para sugerir correcciones, nuevos códigos de error o mejoras de una guía, reemplaza este texto con tu correo o formulario final."),
+                ("Contacto editorial", "Para sugerir correcciones, nuevos códigos de error o mejoras de una guía, abre una incidencia pública en el repositorio de Código Error."),
                 ("Sugerencias de contenido", "Incluye el sistema operativo, código exacto, mensaje completo y cuándo empezó el fallo. Eso ayuda a convertir consultas reales en guías útiles."),
                 ("Aviso", "Código Error ofrece información técnica general. No reemplaza diagnóstico profesional cuando hay riesgo de pérdida de datos, daño físico o seguridad."),
             ],
@@ -1534,6 +1546,13 @@ def legal_pages() -> list[dict]:
 
 def render_legal_page(page: dict) -> None:
     sections = "\n".join(f"<h2>{esc(title)}</h2><p>{esc(text)}</p>" for title, text in page["body"])
+    contact_link = ""
+    if page["route"] == "contacto":
+        contact_link = (
+            '<p><a class="button-link secondary" '
+            'href="https://github.com/IAFUTURE10/CODIGOERROR/issues/new" '
+            'rel="noopener noreferrer">Abrir una incidencia en GitHub</a></p>'
+        )
     body = f"""
 <section class="page-hero">
   <div class="container">
@@ -1545,7 +1564,7 @@ def render_legal_page(page: dict) -> None:
 </section>
 <section class="section">
   <div class="container page-grid">
-    <article class="article-body">{sections}</article>
+    <article class="article-body">{sections}{contact_link}</article>
     <aside class="sidebar-panel">
       <h3>Buscar diagnóstico</h3>
       {search_component("Busca una guía")}
