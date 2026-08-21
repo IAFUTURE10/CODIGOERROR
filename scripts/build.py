@@ -1085,7 +1085,7 @@ def footer() -> str:
       <a href="{route_url('cookies')}">Cookies</a>
       <a href="{route_url('contacto')}">Contacto</a>
       <a href="{route_url('publicaciones')}">Todas las publicaciones</a>
-      <a href="{asset_url('sitemap-index.xml')}">Sitemap</a>
+      <a href="{asset_url('sitemap.xml')}">Sitemap</a>
     </nav>
   </div>
 </footer>
@@ -1609,7 +1609,7 @@ def write_static_assets() -> None:
     (DOCS / "assets" / "js" / "search.js").write_text(js(), encoding="utf-8")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     (DOCS / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap-index.xml\n",
+        f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n",
         encoding="utf-8",
     )
     (DOCS / "ads.txt").write_text(
@@ -1683,12 +1683,13 @@ def write_sitemaps() -> None:
         f"  <sitemap><loc>{xml_escape(absolute_asset_url(path))}</loc><lastmod>{TODAY}</lastmod></sitemap>"
         for path in sitemap_paths
     )
-    (DOCS / "sitemap-index.xml").write_text(
+    sitemap_index = (
         '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + index_entries
-        + "\n</sitemapindex>\n",
-        encoding="utf-8",
+        + "\n</sitemapindex>\n"
     )
+    for filename in ("sitemap.xml", "sitemap-index.xml"):
+        (DOCS / filename).write_text(sitemap_index, encoding="utf-8")
 
 
 def validate_sources() -> None:

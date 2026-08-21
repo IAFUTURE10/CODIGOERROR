@@ -14,7 +14,7 @@ Código Error es una web estática de diagnóstico tecnológico en español, pre
 - `Article`, `WebSite` y `Organization` schema.
 - Imágenes locales WebP con `alt`, `figcaption`, `loading="lazy"` y dimensiones.
 - `robots.txt`, `ads.txt`, `site.webmanifest`, favicon e iconos placeholder.
-- `sitemap-index.xml`, `sitemap-pages.xml` y sitemaps separados por categoría.
+- `sitemap.xml`, `sitemap-index.xml` compatible y sitemaps separados por categoría.
 - Página 404, privacidad, cookies, contacto y sobre el proyecto.
 - Workflow de GitHub Pages con generación y validación automática.
 
@@ -136,7 +136,7 @@ Cuando la URL esté publicada:
 4. Envía este sitemap:
 
 ```text
-https://iafuture10.github.io/CODIGOERROR/sitemap-index.xml
+https://iafuture10.github.io/CODIGOERROR/sitemap.xml
 ```
 
 ## AdSense
@@ -160,7 +160,7 @@ python -m http.server 8000 --directory docs
 
 Para GitHub Pages de proyecto, los enlaces se generan con `base_path: "/CODIGOERROR"`. Si pruebas localmente y quieres enlaces desde raíz local, cambia temporalmente `base_path` a `""`, regenera y no publiques ese cambio.
 
-AdSense consulta `ads.txt` en la raíz del host. Además del archivo generado dentro del proyecto, la cuenta publica `https://iafuture10.github.io/ads.txt` desde el repositorio raíz `IAFUTURE10/IAFUTURE10.github.io`.
+AdSense consulta `ads.txt` en la raíz del host. Además del archivo generado dentro del proyecto, la cuenta publica `https://iafuture10.github.io/ads.txt` desde el repositorio raíz `IAFUTURE10/IAFUTURE10.github.io`. Ese repositorio también publica `https://iafuture10.github.io/sitemap.xml` como índice raíz para Search Console.
 
 ## Copia para el Escritorio
 

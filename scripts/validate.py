@@ -45,6 +45,8 @@ def main() -> None:
         raise AssertionError("docs/index.html was not generated")
     if not (DOCS / "sitemap-index.xml").exists():
         raise AssertionError("sitemap-index.xml was not generated")
+    if not (DOCS / "sitemap.xml").exists():
+        raise AssertionError("sitemap.xml was not generated")
     if not (DOCS / "robots.txt").exists():
         raise AssertionError("robots.txt was not generated")
     if not (DOCS / "ads.txt").exists():
