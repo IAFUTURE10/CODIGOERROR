@@ -1,0 +1,662 @@
+[
+  {
+    "slug": "error-0xc000007b-windows",
+    "category": "windows",
+    "title": "Error 0xc000007b en Windows: causas y soluciones",
+    "meta_description": "Soluciona el error 0xc000007b al abrir juegos o programas en Windows. Revisa Visual C++, DirectX, .NET, arquitectura 32/64 bits y archivos dañados.",
+    "h1": "Error 0xc000007b en Windows: cómo solucionarlo sin reinstalar todo",
+    "summary": "El 0xc000007b suele aparecer cuando una aplicación mezcla librerías de 32 y 64 bits, dependencias de Visual C++ dañadas o archivos de sistema corruptos.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["error 0xc000007b Windows 11", "la aplicación no se pudo iniciar correctamente 0xc000007b", "solucionar 0xc000007b juegos", "0xc000007b Visual C++ DirectX"],
+    "symptoms": ["El programa no abre y muestra 0xc000007b.", "El error aparece después de instalar un juego o mover archivos DLL.", "Reinstalar la app no cambia el resultado."],
+    "quick_checks": ["Confirma si tu Windows es de 64 bits.", "Evita descargar DLL sueltas de sitios desconocidos.", "Reinicia después de instalar runtimes."],
+    "sections": [
+      {
+        "h2": "Por qué aparece el error 0xc000007b",
+        "paragraphs": ["El código indica que Windows no puede cargar correctamente una dependencia de la aplicación. En juegos y programas antiguos, la causa más común es una mezcla entre librerías x86 y x64.", "También puede aparecer cuando Visual C++, DirectX o .NET Framework quedaron incompletos después de una actualización o instalación interrumpida."]
+      },
+      {
+        "h2": "Soluciones recomendadas en orden",
+        "h3": "Empieza por dependencias oficiales antes de tocar DLL",
+        "steps": ["Instala o repara Microsoft Visual C++ Redistributable en versiones x86 y x64.", "Ejecuta el instalador web de DirectX End-User Runtime si el problema ocurre con juegos antiguos.", "Activa o repara .NET Framework desde Características de Windows.", "Ejecuta la aplicación como administrador solo para probar permisos, no como solución permanente.", "Usa sfc /scannow y DISM si otros programas también fallan."]
+      },
+      {
+        "h2": "Qué evitar",
+        "paragraphs": ["No reemplaces DLL del sistema con archivos descargados al azar. Eso puede ocultar el error real y crear fallos más difíciles de reparar.", "Si el problema solo ocurre con un juego, verifica archivos desde Steam, Epic o el lanzador correspondiente antes de reinstalar Windows."]
+      }
+    ],
+    "faq": [
+      {"q": "¿El error 0xc000007b es un virus?", "a": "No necesariamente. Normalmente es un problema de dependencias, arquitectura o archivos dañados. Aun así, conviene analizar el equipo si instalaste DLL o cracks de origen dudoso."},
+      {"q": "¿Debo reinstalar Windows?", "a": "Casi nunca es el primer paso. Repara runtimes, DirectX, .NET y archivos del sistema antes de considerar una reinstalación."}
+    ],
+    "caption": "Diagnóstico del error 0xc000007b con dependencias de Windows, Visual C++ y DirectX."
+  },
+  {
+    "slug": "windows-update-error-0x80070002",
+    "category": "windows",
+    "title": "Error 0x80070002 en Windows Update: solución paso a paso",
+    "meta_description": "Guía para corregir el error 0x80070002 de Windows Update limpiando caché, revisando fecha, servicios, DISM y componentes de actualización.",
+    "h1": "Error 0x80070002 en Windows Update: cómo repararlo",
+    "summary": "El 0x80070002 aparece cuando Windows Update no encuentra archivos esperados o trabaja con una caché de actualización dañada.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["error 0x80070002 Windows Update", "Windows 11 no actualiza 0x80070002", "limpiar caché Windows Update", "reparar componentes Windows Update"],
+    "symptoms": ["La descarga o instalación de actualizaciones se detiene.", "Windows muestra 0x80070002 o 0x80070003.", "El solucionador de problemas detecta componentes dañados."],
+    "quick_checks": ["Verifica fecha, hora y zona horaria.", "Comprueba que hay espacio libre suficiente.", "Desconecta VPN temporalmente durante la actualización."],
+    "sections": [
+      {
+        "h2": "Causas frecuentes del 0x80070002",
+        "paragraphs": ["El error suele venir de una caché incompleta en SoftwareDistribution, archivos temporales corruptos o metadatos de actualización que ya no coinciden con lo que Windows intenta instalar."]
+      },
+      {
+        "h2": "Cómo limpiar Windows Update correctamente",
+        "h3": "Restablece la caché sin borrar tus archivos personales",
+        "steps": ["Pausa las actualizaciones durante unos minutos.", "Detén los servicios Windows Update y BITS desde Servicios o terminal con permisos de administrador.", "Renombra las carpetas SoftwareDistribution y catroot2 para que Windows regenere su caché.", "Reinicia el equipo y vuelve a buscar actualizaciones.", "Si falla otra vez, ejecuta DISM /Online /Cleanup-Image /RestoreHealth."]
+      },
+      {
+        "h2": "Cuándo usar instalación manual",
+        "paragraphs": ["Si el error afecta a una actualización concreta, busca el código KB en el Catálogo de Microsoft Update e instala el paquete manualmente. Esto ayuda a separar un fallo de descarga de un fallo del sistema."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Puedo borrar SoftwareDistribution?", "a": "Es más seguro renombrarla. Windows creará una nueva carpeta y conservarás una copia por si necesitas revisar registros."},
+      {"q": "¿Este error borra mis archivos?", "a": "No. El error afecta al sistema de actualización, no a documentos personales."}
+    ],
+    "caption": "Panel de reparación de Windows Update con caché, servicios y estado de actualización."
+  },
+  {
+    "slug": "pantalla-azul-critical-process-died",
+    "category": "windows",
+    "title": "Pantalla azul Critical Process Died: causas y reparación",
+    "meta_description": "Soluciona la pantalla azul CRITICAL_PROCESS_DIED en Windows revisando archivos de sistema, drivers, disco, memoria y actualizaciones recientes.",
+    "h1": "Critical Process Died en Windows: qué significa y cómo repararlo",
+    "summary": "CRITICAL_PROCESS_DIED indica que un proceso esencial de Windows se detuvo de forma inesperada. Puede deberse a drivers, disco, RAM o archivos de sistema.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["Critical Process Died Windows 11", "pantalla azul Windows proceso crítico", "BSOD Critical Process Died solución", "Windows se reinicia pantalla azul"],
+    "symptoms": ["Pantalla azul al iniciar o minutos después de entrar.", "Reinicio automático con código CRITICAL_PROCESS_DIED.", "Modo seguro funciona, pero el arranque normal falla."],
+    "quick_checks": ["Retira hardware conectado recientemente.", "Desinstala drivers instalados antes del fallo.", "Respalda archivos importantes si sospechas del disco."],
+    "sections": [
+      {
+        "h2": "Qué significa CRITICAL_PROCESS_DIED",
+        "paragraphs": ["Windows depende de procesos internos para mantener el sistema estable. Si uno se cierra o queda corrupto, el sistema se detiene para evitar daños mayores."]
+      },
+      {
+        "h2": "Diagnóstico en modo seguro",
+        "h3": "Aísla drivers y software de terceros",
+        "steps": ["Arranca en modo seguro con funciones de red.", "Desinstala antivirus, drivers o utilidades instaladas justo antes del error.", "Ejecuta sfc /scannow y luego DISM si SFC no puede reparar todo.", "Revisa el estado del disco con chkdsk y herramientas SMART.", "Prueba memoria si los errores aparecen de forma aleatoria."]
+      },
+      {
+        "h2": "Señales de fallo de hardware",
+        "paragraphs": ["Si la pantalla azul aparece incluso durante instalación limpia, modo seguro o recuperación, prioriza pruebas de RAM, SSD y temperaturas antes de insistir con soluciones de software."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Critical Process Died siempre es por Windows dañado?", "a": "No. Un driver defectuoso o un disco con sectores problemáticos puede provocar el mismo código."},
+      {"q": "¿Sirve restaurar sistema?", "a": "Sí, si el problema empezó después de un driver, actualización o instalación reciente."}
+    ],
+    "caption": "Diagnóstico de pantalla azul CRITICAL_PROCESS_DIED con rutas de software y hardware."
+  },
+  {
+    "slug": "laptop-enciende-no-da-imagen",
+    "category": "pc-laptops",
+    "title": "Laptop enciende pero no da imagen: diagnóstico real",
+    "meta_description": "Qué hacer si tu laptop prende pero la pantalla queda negra: reinicio eléctrico, RAM, monitor externo, brillo, BIOS, pantalla y placa.",
+    "h1": "Laptop enciende pero no da imagen: causas y pruebas seguras",
+    "summary": "Cuando una laptop prende sin imagen, conviene separar pantalla, memoria, energía y placa antes de desmontar o comprar repuestos.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["laptop prende pero no da imagen", "laptop pantalla negra ventilador enciende", "laptop enciende luces pero no pantalla", "reinicio eléctrico laptop"],
+    "symptoms": ["Encienden luces o ventilador, pero la pantalla queda negra.", "No aparece logo del fabricante.", "Con cargador conectado el equipo parece arrancar."],
+    "quick_checks": ["Sube el brillo y prueba la tecla de cambio de pantalla.", "Conecta un monitor externo.", "Desconecta USB, HDMI y tarjetas externas."],
+    "sections": [
+      {
+        "h2": "Primero separa pantalla de arranque",
+        "paragraphs": ["Si un monitor externo muestra imagen, el fallo apunta a pantalla, flex o retroiluminación. Si tampoco hay señal externa, el problema puede estar en RAM, BIOS, placa o alimentación interna."]
+      },
+      {
+        "h2": "Pruebas sin desmontaje profundo",
+        "h3": "Orden seguro para evitar daños",
+        "steps": ["Haz un reinicio eléctrico: apaga, desconecta cargador, mantén presionado encendido 30 segundos y vuelve a probar.", "Conecta monitor externo por HDMI o USB-C compatible.", "Retira periféricos y tarjetas externas.", "Si tu modelo permite acceso, reseatea la RAM con el equipo apagado y sin energía.", "Busca patrones de luces o pitidos del fabricante."]
+      },
+      {
+        "h2": "Cuándo llevarla a servicio técnico",
+        "paragraphs": ["Si no hay imagen externa, no hay logo y los códigos de luces apuntan a placa o memoria soldada, evita seguir encendiendo repetidamente. Un diagnóstico con fuente, RAM compatible y medición evita cambiar pantalla innecesariamente."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Puede ser solo la pantalla?", "a": "Sí, especialmente si hay imagen por HDMI. Si no hay imagen externa, no conviene comprar pantalla todavía."},
+      {"q": "¿Quitar la batería ayuda?", "a": "En modelos con batería removible puede ayudar a descargar energía residual. En modelos sellados usa reinicio eléctrico sin abrir si no tienes experiencia."}
+    ],
+    "caption": "Secuencia de diagnóstico para laptop encendida con pantalla negra."
+  },
+  {
+    "slug": "pc-prende-apaga-sin-dar-video",
+    "category": "pc-laptops",
+    "title": "PC prende y se apaga sin dar video: qué revisar",
+    "meta_description": "Diagnóstico para una PC que prende y se apaga sin imagen: fuente, RAM, placa, CPU, temperatura, cortos y conexiones del gabinete.",
+    "h1": "PC prende y se apaga sin dar video: diagnóstico por etapas",
+    "summary": "Un apagado inmediato suele indicar protección de fuente, corto, RAM mal asentada, CPU sin alimentación o error de montaje.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["PC prende y se apaga sin video", "PC no da imagen y reinicia", "fuente poder falla PC", "RAM mal puesta PC pantalla negra"],
+    "symptoms": ["Los ventiladores giran segundos y se apagan.", "No hay señal en monitor.", "La placa intenta encender en bucle."],
+    "quick_checks": ["Revisa conector ATX de 24 pines y CPU de 8 pines.", "Prueba un solo módulo de RAM.", "Comprueba separadores de gabinete."],
+    "sections": [
+      {
+        "h2": "Por qué la PC se apaga de inmediato",
+        "paragraphs": ["La fuente o la placa pueden cortar energía para proteger el equipo. Esto pasa ante cortos, conectores incompletos, CPU sin disipador correcto o memoria incompatible."]
+      },
+      {
+        "h2": "Prueba mínima fuera del gabinete",
+        "h3": "Reduce el sistema a lo esencial",
+        "steps": ["Desconecta discos, periféricos y tarjetas no necesarias.", "Arranca con placa, CPU, disipador, un módulo de RAM y fuente.", "Prueba otro slot de RAM.", "Verifica que el disipador esté firme y el ventilador de CPU conectado.", "Si la placa tiene LEDs de diagnóstico, anota en qué etapa se queda."]
+      },
+      {
+        "h2": "Cuándo sospechar de la fuente",
+        "paragraphs": ["Si el apagado ocurre incluso con configuración mínima y los conectores están correctos, prueba con una fuente confiable antes de culpar a la placa. Una fuente débil puede encender luces pero fallar bajo carga inicial."]
+      }
+    ],
+    "faq": [
+      {"q": "¿La pila CMOS puede causar esto?", "a": "Puede provocar fallos de configuración, pero un apagado instantáneo suele apuntar más a energía, corto o montaje."},
+      {"q": "¿Debo actualizar BIOS?", "a": "Solo si la placa enciende de forma estable o admite BIOS Flashback. No intentes actualizar si se apaga en segundos."}
+    ],
+    "caption": "Diagnóstico de PC que entra en ciclo de encendido sin señal de video."
+  },
+  {
+    "slug": "steam-no-abre-windows-11",
+    "category": "gaming",
+    "title": "Steam no abre en Windows 11: soluciones efectivas",
+    "meta_description": "Qué hacer si Steam no abre en Windows 11: procesos bloqueados, caché, permisos, WebHelper, firewall, beta client y reinstalación sin perder juegos.",
+    "h1": "Steam no abre en Windows 11: cómo repararlo sin borrar tus juegos",
+    "summary": "Steam puede quedarse sin abrir por procesos colgados, caché dañada, permisos, WebHelper o interferencias de red.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["Steam no abre Windows 11", "Steam se queda cargando", "Steam Client WebHelper error", "reinstalar Steam sin borrar juegos"],
+    "symptoms": ["Steam aparece en el administrador pero no muestra ventana.", "El cliente se abre y se cierra.", "WebHelper consume recursos o falla al iniciar."],
+    "quick_checks": ["Cierra todos los procesos de Steam.", "Reinicia el router si el login se queda cargando.", "No borres steamapps si reinstalas."],
+    "sections": [
+      {
+        "h2": "Causas más comunes",
+        "paragraphs": ["Steam depende de procesos internos, caché web y conexión con sus servicios. Si uno queda bloqueado, la ventana puede no aparecer aunque el proceso esté activo."]
+      },
+      {
+        "h2": "Solución sin perder juegos instalados",
+        "h3": "Limpia cliente y caché antes de reinstalar",
+        "steps": ["Finaliza Steam, Steam Client Service y Steam Client WebHelper.", "Ejecuta steam://flushconfig desde Ejecutar si Windows lo permite.", "Borra caché web del cliente desde la carpeta de usuario de Steam.", "Permite Steam en firewall y desactiva VPN temporalmente.", "Si reinstalas, conserva la carpeta steamapps para mantener tus juegos."]
+      },
+      {
+        "h2": "Si solo falla después de actualizar",
+        "paragraphs": ["Sal de la beta del cliente si estabas inscrito o espera una actualización menor. También revisa fecha y hora del sistema, porque errores TLS pueden impedir el inicio de sesión."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Reinstalar Steam borra mis juegos?", "a": "No si conservas la carpeta steamapps y luego agregas la biblioteca desde Steam."},
+      {"q": "¿Puede ser el antivirus?", "a": "Sí. Algunos antivirus bloquean WebHelper o el servicio de Steam. Prueba añadiendo excepción temporal."}
+    ],
+    "caption": "Diagnóstico del cliente Steam con procesos, caché y conexión en Windows 11."
+  },
+  {
+    "slug": "error-directx-juegos-windows",
+    "category": "gaming",
+    "title": "Error de DirectX al abrir juegos en Windows",
+    "meta_description": "Soluciona errores de DirectX en juegos revisando runtime, driver GPU, modo de compatibilidad, archivos del juego y configuración gráfica.",
+    "h1": "Error de DirectX en juegos: causas y soluciones en Windows",
+    "summary": "Los errores de DirectX suelen aparecer por runtime faltante, controlador gráfico inestable, configuración incompatible o archivos del juego dañados.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["error DirectX juegos Windows", "DirectX runtime missing", "juego no abre DirectX", "DXGI error device removed"],
+    "symptoms": ["El juego muestra error de DirectX al iniciar.", "Pantalla negra antes del menú.", "Crashes con mensajes DXGI o D3D."],
+    "quick_checks": ["Actualiza driver GPU desde fabricante.", "Verifica archivos del juego.", "Prueba cambiar de DirectX 12 a DirectX 11 si el juego lo permite."],
+    "sections": [
+      {
+        "h2": "Qué parte de DirectX falla",
+        "paragraphs": ["No todos los errores de DirectX significan que DirectX esté ausente. A veces falla la comunicación con la GPU, una librería antigua o una opción gráfica no soportada."]
+      },
+      {
+        "h2": "Reparación recomendada",
+        "h3": "Trabaja de dependencias a configuración",
+        "steps": ["Instala DirectX End-User Runtime para juegos antiguos.", "Actualiza o reinstala limpiamente el driver gráfico.", "Verifica archivos del juego desde el lanzador.", "Desactiva overlays de Discord, GeForce Experience, Steam o MSI Afterburner para probar.", "Reduce API gráfica a DirectX 11 si DirectX 12 falla."]
+      },
+      {
+        "h2": "Señales de problema de GPU",
+        "paragraphs": ["Si varios juegos muestran errores DXGI, pantallas negras o reinicios, revisa temperaturas, fuente y estabilidad de la tarjeta gráfica. No lo trates como un problema de un solo juego."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Windows 11 ya trae DirectX?", "a": "Sí, pero algunos juegos antiguos necesitan librerías auxiliares del runtime heredado."},
+      {"q": "¿Instalar DirectX otra vez es seguro?", "a": "Sí si usas el instalador oficial de Microsoft. Evita paquetes de terceros."}
+    ],
+    "caption": "Ruta de diagnóstico para errores DirectX, DXGI y D3D en juegos de Windows."
+  },
+  {
+    "slug": "android-wifi-conectado-sin-internet",
+    "category": "android",
+    "title": "Android conectado a WiFi sin Internet: solución completa",
+    "meta_description": "Soluciona WiFi conectado sin Internet en Android revisando router, DNS privado, IP, fecha, portal cautivo, ahorro de datos y restablecimiento de red.",
+    "h1": "Android conectado a WiFi sin Internet: qué revisar primero",
+    "summary": "Si Android se conecta al WiFi pero no navega, el fallo puede estar en DNS privado, portal cautivo, IP local, router o configuración de ahorro.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["Android WiFi conectado sin Internet", "celular conectado a WiFi pero no navega", "DNS privado Android sin Internet", "restablecer red Android"],
+    "symptoms": ["El teléfono muestra WiFi conectado pero las apps no cargan.", "Otros dispositivos sí tienen Internet.", "El problema ocurre solo en una red concreta."],
+    "quick_checks": ["Desactiva DNS privado para probar.", "Olvida la red y vuelve a conectar.", "Reinicia router y teléfono."],
+    "sections": [
+      {
+        "h2": "Distingue entre problema del teléfono y de la red",
+        "paragraphs": ["Si otros equipos navegan en el mismo WiFi, revisa el Android. Si ninguno navega, el problema está en router, proveedor o configuración de red."]
+      },
+      {
+        "h2": "Ajustes que suelen resolverlo",
+        "h3": "Revisa red antes de restablecer el teléfono",
+        "steps": ["Olvida la red WiFi y vuelve a escribir la contraseña.", "Desactiva DNS privado o cámbialo a automático.", "Comprueba fecha y hora automáticas.", "Desactiva VPN y ahorro de datos para probar.", "Restablece ajustes de red si el problema ocurre en varias redes."]
+      },
+      {
+        "h2": "Cuando aparece en hoteles o universidades",
+        "paragraphs": ["Puede faltar aceptar un portal cautivo. Abre el navegador y entra a una web simple para forzar la pantalla de inicio de sesión de la red."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Restablecer red borra mis fotos?", "a": "No. Borra redes WiFi guardadas, Bluetooth emparejado y ajustes móviles, pero no archivos personales."},
+      {"q": "¿El DNS privado puede cortar Internet?", "a": "Sí. Si el servidor DNS privado no responde, Android puede quedar conectado al WiFi pero sin resolver páginas."}
+    ],
+    "caption": "Diagnóstico móvil de WiFi conectado sin salida a Internet en Android."
+  },
+  {
+    "slug": "google-play-no-descarga-aplicaciones",
+    "category": "android",
+    "title": "Google Play no descarga aplicaciones: cómo arreglarlo",
+    "meta_description": "Soluciona Google Play que no descarga apps revisando almacenamiento, caché, servicios de Google, fecha, cuenta, red y actualizaciones pendientes.",
+    "h1": "Google Play no descarga aplicaciones: solución ordenada",
+    "summary": "Las descargas bloqueadas en Google Play suelen estar relacionadas con caché, Servicios de Google, almacenamiento, cuenta o red.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["Google Play no descarga aplicaciones", "Play Store descarga pendiente", "no puedo instalar apps Android", "Servicios de Google Play error descarga"],
+    "symptoms": ["Las apps quedan en descarga pendiente.", "La descarga llega a 100% pero no instala.", "Play Store muestra error sin código claro."],
+    "quick_checks": ["Verifica espacio libre.", "Cambia de WiFi a datos o viceversa.", "Reinicia el teléfono después de limpiar caché."],
+    "sections": [
+      {
+        "h2": "Por qué Play Store se queda en pendiente",
+        "paragraphs": ["La tienda depende de varios servicios: Play Store, Servicios de Google Play, Administrador de descargas y cuenta Google. Si uno falla, la descarga puede quedar congelada."]
+      },
+      {
+        "h2": "Limpieza correcta de caché",
+        "h3": "No borres datos sin revisar lo básico",
+        "steps": ["Cancela descargas pendientes.", "Limpia caché de Play Store.", "Limpia caché de Servicios de Google Play.", "Revisa que Administrador de descargas esté habilitado.", "Si sigue igual, elimina y vuelve a agregar la cuenta Google."]
+      },
+      {
+        "h2": "Problemas por almacenamiento",
+        "paragraphs": ["Aunque Android muestre algo de espacio libre, las apps necesitan margen para descargar, descomprimir e instalar. Libera más espacio del tamaño exacto de la app."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Borrar caché de Play Store elimina mis apps?", "a": "No. Solo elimina archivos temporales de la tienda."},
+      {"q": "¿Debo actualizar Servicios de Google Play?", "a": "Sí, si hay actualización disponible. Muchas descargas dependen de ese componente."}
+    ],
+    "caption": "Diagnóstico de Play Store con cola de descargas, caché y servicios de Google."
+  },
+  {
+    "slug": "wifi-conectado-sin-internet-windows-11",
+    "category": "internet",
+    "title": "WiFi conectado sin Internet en Windows 11: solución",
+    "meta_description": "Qué hacer si Windows 11 muestra WiFi conectado sin Internet: DNS, IP, puerta de enlace, controlador, router, VPN y restablecimiento de red.",
+    "h1": "WiFi conectado sin Internet en Windows 11: diagnóstico paso a paso",
+    "summary": "El mensaje WiFi conectado sin Internet puede venir de DNS, IP incorrecta, puerta de enlace, controlador inalámbrico, VPN o router sin salida.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["WiFi conectado sin Internet Windows 11", "Windows 11 conectado pero no navega", "DNS no responde Windows 11", "restablecer red Windows 11"],
+    "symptoms": ["Windows muestra conectado sin Internet.", "El navegador no carga, pero el WiFi tiene señal.", "Otros dispositivos pueden o no navegar."],
+    "quick_checks": ["Prueba otra web y otro navegador.", "Reinicia router y PC.", "Desactiva VPN temporalmente."],
+    "sections": [
+      {
+        "h2": "Identifica si falla DNS o conexión real",
+        "paragraphs": ["Si puedes hacer ping a una IP pública pero no abrir dominios, el problema es DNS. Si no hay respuesta a IP, revisa puerta de enlace, router o proveedor."]
+      },
+      {
+        "h2": "Pasos para reparar la conexión",
+        "h3": "Empieza por red local antes de reinstalar drivers",
+        "steps": ["Olvida la red WiFi y vuelve a conectarte.", "Ejecuta el solucionador de problemas de red.", "Renueva IP y limpia caché DNS.", "Cambia DNS a automático o prueba servidores confiables.", "Actualiza o revierte el driver WiFi si el problema comenzó tras una actualización."]
+      },
+      {
+        "h2": "Cuándo restablecer la red",
+        "paragraphs": ["Usa Restablecimiento de red si varias conexiones fallan o hay adaptadores virtuales de VPN antiguos. Después tendrás que volver a conectar redes WiFi guardadas."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Por qué tengo señal WiFi pero no Internet?", "a": "La señal solo confirma conexión al router. La salida a Internet depende de IP, DNS, puerta de enlace y proveedor."},
+      {"q": "¿Cambiar DNS siempre arregla esto?", "a": "No siempre. Ayuda cuando el fallo es de resolución de nombres, pero no si el router no tiene salida."}
+    ],
+    "caption": "Diagnóstico de conexión WiFi en Windows 11 con DNS, IP y puerta de enlace."
+  },
+  {
+    "slug": "dns-probe-finished-nxdomain",
+    "category": "internet",
+    "title": "DNS_PROBE_FINISHED_NXDOMAIN: qué significa y solución",
+    "meta_description": "Corrige DNS_PROBE_FINISHED_NXDOMAIN revisando DNS, caché, archivo hosts, VPN, router, extensiones y configuración de red.",
+    "h1": "DNS_PROBE_FINISHED_NXDOMAIN: significado y solución",
+    "summary": "Este error indica que el navegador no pudo resolver el dominio. Puede ser un problema real del sitio o un fallo local de DNS.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["DNS_PROBE_FINISHED_NXDOMAIN solución", "Chrome no resuelve DNS", "NXDOMAIN Windows", "limpiar caché DNS"],
+    "symptoms": ["Chrome muestra DNS_PROBE_FINISHED_NXDOMAIN.", "Solo fallan algunas páginas.", "Cambiar de red puede resolver el problema."],
+    "quick_checks": ["Prueba la URL en otro dispositivo.", "Desactiva VPN y proxy.", "Limpia caché DNS del sistema y navegador."],
+    "sections": [
+      {
+        "h2": "Qué significa NXDOMAIN",
+        "paragraphs": ["NXDOMAIN significa que el DNS respondió que el dominio no existe. Si el dominio sí existe para otros usuarios, tu equipo o red está usando datos DNS incorrectos."]
+      },
+      {
+        "h2": "Corrección paso a paso",
+        "h3": "Limpia resolución local y compara redes",
+        "steps": ["Comprueba que la dirección esté bien escrita.", "Limpia caché DNS de Windows y caché de sockets del navegador.", "Cambia DNS temporalmente.", "Revisa el archivo hosts si solo falla un dominio.", "Reinicia router si varios dispositivos tienen el mismo error."]
+      },
+      {
+        "h2": "Cuando el problema es del sitio",
+        "paragraphs": ["Si varias herramientas externas tampoco resuelven el dominio, el propietario del sitio debe corregir su DNS. En ese caso no hay arreglo local permanente."]
+      }
+    ],
+    "faq": [
+      {"q": "¿NXDOMAIN es problema de Chrome?", "a": "No necesariamente. Chrome muestra el mensaje, pero el origen suele estar en DNS local, router, proveedor o dominio."},
+      {"q": "¿Borrar caché del navegador basta?", "a": "A veces. Si el fallo está en DNS del sistema, también debes limpiar caché DNS de Windows o cambiar servidor DNS."}
+    ],
+    "caption": "Mapa de resolución DNS para el error DNS_PROBE_FINISHED_NXDOMAIN."
+  },
+  {
+    "slug": "err-connection-reset-chrome",
+    "category": "navegadores",
+    "title": "ERR_CONNECTION_RESET en Chrome: causas y solución",
+    "meta_description": "Soluciona ERR_CONNECTION_RESET en Chrome revisando red, proxy, VPN, firewall, caché SSL, extensiones, MTU y configuración TCP/IP.",
+    "h1": "ERR_CONNECTION_RESET en Chrome: cómo encontrar la causa",
+    "summary": "ERR_CONNECTION_RESET indica que la conexión se cortó antes de completarse. Puede venir del sitio, red local, firewall, proxy o software de seguridad.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["ERR_CONNECTION_RESET Chrome", "esta página no funciona conexión restablecida", "Chrome conexión restablecida solución", "reset TCP IP Windows"],
+    "symptoms": ["Chrome muestra ERR_CONNECTION_RESET.", "El fallo ocurre en una o varias páginas.", "Otros navegadores pueden funcionar o fallar igual."],
+    "quick_checks": ["Prueba modo incógnito.", "Desactiva VPN/proxy.", "Compara con otro navegador."],
+    "sections": [
+      {
+        "h2": "Qué significa conexión restablecida",
+        "paragraphs": ["La conexión empezó, pero fue cerrada de forma inesperada. Si solo pasa en un sitio, puede ser bloqueo del servidor. Si pasa en muchos, revisa tu red o equipo."]
+      },
+      {
+        "h2": "Soluciones prácticas",
+        "h3": "Descarta extensiones y filtros de red",
+        "steps": ["Abre la web en modo incógnito para descartar extensiones.", "Desactiva proxy, VPN y filtros HTTPS del antivirus.", "Limpia caché SSL y datos del sitio.", "Restablece TCP/IP si el error afecta a varios navegadores.", "Prueba otra red para confirmar si el bloqueo está en router o proveedor."]
+      },
+      {
+        "h2": "Si ocurre solo en redes corporativas",
+        "paragraphs": ["Algunas redes inspeccionan tráfico HTTPS y pueden cortar conexiones. En ese caso revisa certificados instalados, políticas del navegador o consulta al administrador."]
+      }
+    ],
+    "faq": [
+      {"q": "¿ERR_CONNECTION_RESET es igual a no tener Internet?", "a": "No. Puedes tener Internet y aun así una conexión específica se puede reiniciar por firewall, proxy o servidor."},
+      {"q": "¿Borrar cookies ayuda?", "a": "Ayuda si el error está asociado a un sitio concreto, pero no corrige fallos de red general."}
+    ],
+    "caption": "Diagnóstico del error ERR_CONNECTION_RESET con navegador, proxy y firewall."
+  },
+  {
+    "slug": "disco-duro-100-windows-11",
+    "category": "almacenamiento",
+    "title": "Disco al 100% en Windows 11: cómo bajarlo",
+    "meta_description": "Soluciona uso de disco al 100% en Windows 11 revisando procesos, indexación, SysMain, salud del disco, memoria, antivirus y almacenamiento.",
+    "h1": "Disco al 100% en Windows 11: diagnóstico antes de desactivar servicios",
+    "summary": "El disco al 100% puede ser normal por momentos, pero si el equipo queda lento hay que revisar procesos, salud del disco, memoria y tareas de fondo.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["disco 100 Windows 11", "uso de disco al 100", "Windows lento disco duro", "SysMain disco 100"],
+    "symptoms": ["Administrador de tareas muestra disco al 100%.", "El equipo tarda en abrir programas.", "El uso baja después de varios minutos o se mantiene siempre alto."],
+    "quick_checks": ["Ordena procesos por uso de disco.", "Comprueba salud SMART.", "Verifica espacio libre."],
+    "sections": [
+      {
+        "h2": "No todo disco al 100% tiene la misma causa",
+        "paragraphs": ["En discos mecánicos, Windows 11 puede saturar la unidad con indexación, antivirus o actualizaciones. En SSD, un 100% constante puede indicar firmware, espacio agotado o fallos."]
+      },
+      {
+        "h2": "Qué revisar en orden",
+        "h3": "Busca el proceso antes de tocar servicios",
+        "steps": ["Abre Administrador de tareas y ordena por Disco.", "Espera a que terminen actualizaciones si Windows está instalando paquetes.", "Revisa salud del disco con SMART.", "Comprueba memoria RAM: si falta RAM, Windows usará paginación y saturará el disco.", "Desactiva temporalmente indexación solo para probar si es la causa."]
+      },
+      {
+        "h2": "Cuándo migrar a SSD",
+        "paragraphs": ["Si usas HDD como disco del sistema, un SSD mejora mucho más que desactivar servicios. Antes de migrar, respalda datos y revisa si el disco actual muestra advertencias SMART."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Debo desactivar SysMain?", "a": "Solo como prueba. Si mejora, aún conviene revisar si el disco es muy lento o está fallando."},
+      {"q": "¿El disco al 100% daña el PC?", "a": "El uso alto no daña por sí mismo, pero puede revelar un disco envejecido o con errores."}
+    ],
+    "caption": "Panel de rendimiento para uso de disco al 100% en Windows 11."
+  },
+  {
+    "slug": "ssd-no-aparece-bios-windows",
+    "category": "almacenamiento",
+    "title": "SSD no aparece en BIOS ni Windows: diagnóstico",
+    "meta_description": "Qué revisar si un SSD no aparece en BIOS o Windows: cables, puerto M.2, modo SATA/NVMe, administración de discos, firmware y fallo físico.",
+    "h1": "SSD no aparece en BIOS ni Windows: cómo diagnosticarlo",
+    "summary": "Si el SSD no aparece en BIOS, el problema es anterior a Windows. Si aparece en BIOS pero no en el explorador, revisa particiones y administración de discos.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["SSD no aparece BIOS", "SSD no aparece Windows", "NVMe no detectado", "disco nuevo no sale en explorador"],
+    "symptoms": ["El SSD no se muestra durante el arranque.", "Windows no lo lista en el explorador.", "Administración de discos lo muestra sin inicializar."],
+    "quick_checks": ["Cambia cable SATA o puerto.", "Revisa compatibilidad M.2 SATA/NVMe.", "No inicialices si contiene datos importantes sin respaldo."],
+    "sections": [
+      {
+        "h2": "BIOS primero, Windows después",
+        "paragraphs": ["Cuando la BIOS no detecta la unidad, Windows no tiene forma de verla. En ese caso revisa conexión, compatibilidad del puerto y configuración de almacenamiento."]
+      },
+      {
+        "h2": "Pruebas por tipo de SSD",
+        "h3": "SATA y NVMe fallan por razones distintas",
+        "steps": ["En SATA, cambia cable de datos y alimentación.", "En M.2, confirma si el puerto acepta SATA, NVMe o ambos.", "Actualiza BIOS si la placa es antigua y el SSD es nuevo.", "Si BIOS lo detecta, abre Administración de discos e inicializa solo si es nuevo.", "Prueba la unidad en otro equipo o adaptador para confirmar si falló físicamente."]
+      },
+      {
+        "h2": "Cuidado con recuperación de datos",
+        "paragraphs": ["Si el SSD contenía información importante y dejó de aparecer de repente, evita formatear, inicializar o crear particiones. Prioriza recuperación antes de intentar repararlo."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Un SSD nuevo debe aparecer en el explorador?", "a": "No siempre. Puede aparecer en Administración de discos sin letra ni formato."},
+      {"q": "¿Todos los M.2 son compatibles?", "a": "No. Algunos puertos aceptan solo NVMe o solo SATA. Revisa el manual de la placa o laptop."}
+    ],
+    "caption": "Diagnóstico de detección de SSD SATA y NVMe en BIOS y Windows."
+  },
+  {
+    "slug": "nvidia-driver-no-instala",
+    "category": "graficos",
+    "title": "Driver NVIDIA no instala: solución limpia",
+    "meta_description": "Soluciona errores al instalar drivers NVIDIA revisando compatibilidad, Windows Update, DDU, modo seguro, portátil vs escritorio y GPU detectada.",
+    "h1": "Driver NVIDIA no instala: cómo hacer una instalación limpia",
+    "summary": "La instalación de NVIDIA puede fallar por driver incorrecto, restos de versiones anteriores, Windows desactualizado o GPU no detectada.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["driver NVIDIA no instala", "instalador NVIDIA no puede continuar", "DDU NVIDIA Windows 11", "GPU NVIDIA no detectada"],
+    "symptoms": ["El instalador dice que no puede continuar.", "Windows usa Adaptador de pantalla básico.", "GeForce Experience falla al actualizar."],
+    "quick_checks": ["Confirma modelo exacto de GPU.", "Descarga driver para portátil si es laptop.", "Instala actualizaciones pendientes de Windows."],
+    "sections": [
+      {
+        "h2": "Por qué falla el instalador NVIDIA",
+        "paragraphs": ["El instalador valida hardware, versión de Windows y paquetes previos. Si el modelo no coincide o quedaron restos dañados, puede detenerse antes de copiar archivos."]
+      },
+      {
+        "h2": "Instalación limpia recomendada",
+        "h3": "Usa limpieza completa solo cuando sea necesario",
+        "steps": ["Descarga el driver correcto desde NVIDIA o fabricante de la laptop.", "Desinstala GeForce Experience si está fallando.", "Usa DDU en modo seguro si hay restos de drivers corruptos.", "Instala el controlador sin conexión a Internet para evitar que Windows meta otro driver al mismo tiempo.", "Reinicia y verifica el modelo en Administrador de dispositivos."]
+      },
+      {
+        "h2": "Laptops con gráficos híbridos",
+        "paragraphs": ["En equipos con Intel + NVIDIA, a veces conviene instalar primero el driver Intel del fabricante. Algunos portátiles requieren paquetes OEM para gestionar correctamente el cambio de GPU."]
+      }
+    ],
+    "faq": [
+      {"q": "¿DDU es obligatorio?", "a": "No. Úsalo cuando la instalación normal falla o hay restos de controladores anteriores."},
+      {"q": "¿GeForce Experience instala el driver correcto?", "a": "Normalmente sí, pero si el cliente falla descarga el instalador manual correspondiente a tu GPU."}
+    ],
+    "caption": "Diagnóstico de instalación de controlador NVIDIA con GPU, Windows y limpieza de driver."
+  },
+  {
+    "slug": "no-hay-sonido-windows-11",
+    "category": "audio",
+    "title": "No hay sonido en Windows 11: solución completa",
+    "meta_description": "Soluciona falta de sonido en Windows 11 revisando dispositivo predeterminado, mezclador, servicios, Realtek, Bluetooth, permisos y drivers.",
+    "h1": "No hay sonido en Windows 11: diagnóstico sin reinstalar drivers a ciegas",
+    "summary": "La falta de sonido puede venir de salida incorrecta, volumen por app, servicios detenidos, driver Realtek o conflicto con audio Bluetooth/HDMI.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["no hay sonido Windows 11", "audio Windows 11 no funciona", "Realtek no suena", "dispositivo de salida no aparece Windows"],
+    "symptoms": ["El icono de audio no muestra error pero no suena.", "Solo algunas apps no tienen sonido.", "Windows cambió a HDMI, Bluetooth o monitor."],
+    "quick_checks": ["Selecciona salida correcta.", "Revisa mezclador de volumen por aplicación.", "Desconecta HDMI o Bluetooth para probar."],
+    "sections": [
+      {
+        "h2": "La salida puede estar cambiada",
+        "paragraphs": ["Windows puede enviar audio al monitor, mando, auriculares Bluetooth o salida digital sin que sea evidente. Por eso conviene revisar la salida antes de tocar drivers."]
+      },
+      {
+        "h2": "Ruta de reparación",
+        "h3": "De configuración simple a controlador",
+        "steps": ["Selecciona el dispositivo de salida correcto en Configuración de sonido.", "Abre Mezclador de volumen y revisa que la app no esté silenciada.", "Reinicia los servicios Audio de Windows y Audio Endpoint Builder.", "Ejecuta el solucionador de problemas de audio.", "Reinstala driver Realtek o del fabricante si el dispositivo no aparece."]
+      },
+      {
+        "h2": "Problemas con Bluetooth",
+        "paragraphs": ["Si el audio Bluetooth se conecta pero no suena, elimina el emparejamiento, reinicia Bluetooth y vuelve a vincular. También verifica que Windows no esté usando el perfil de manos libres para música."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Por qué YouTube no suena pero Spotify sí?", "a": "Puede ser el mezclador de volumen por app o salida asignada a una aplicación concreta."},
+      {"q": "¿Actualizar driver siempre ayuda?", "a": "No. Si el problema es salida equivocada o mezcla de volumen, actualizar driver no cambia nada."}
+    ],
+    "caption": "Panel de diagnóstico de audio para Windows 11, salidas, mezclador y servicios."
+  },
+  {
+    "slug": "dispositivo-usb-no-reconocido",
+    "category": "drivers",
+    "title": "Dispositivo USB no reconocido en Windows: solución",
+    "meta_description": "Corrige dispositivo USB no reconocido revisando puerto, cable, energía, administrador de dispositivos, drivers, suspensión selectiva y código 43.",
+    "h1": "Dispositivo USB no reconocido en Windows: cómo diagnosticarlo",
+    "summary": "El mensaje USB no reconocido puede deberse a cable, puerto, consumo de energía, descriptor dañado, driver incorrecto o falla física del dispositivo.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["dispositivo USB no reconocido", "Windows no reconoce USB", "código 43 USB", "descriptor de dispositivo falló"],
+    "symptoms": ["Windows muestra dispositivo USB no reconocido.", "El dispositivo aparece con advertencia en Administrador.", "Funciona en otro puerto o equipo de forma intermitente."],
+    "quick_checks": ["Prueba otro cable y puerto.", "Evita hubs sin alimentación.", "Reinicia con el dispositivo desconectado."],
+    "sections": [
+      {
+        "h2": "Causas comunes",
+        "paragraphs": ["Windows necesita leer el descriptor USB para identificar el dispositivo. Si el cable, puerto o firmware falla durante esa lectura, aparece el error aunque el dispositivo reciba energía."]
+      },
+      {
+        "h2": "Solución por etapas",
+        "h3": "Distingue puerto, energía y driver",
+        "steps": ["Conecta el USB directo al equipo, sin hub.", "Prueba otro cable si el dispositivo usa cable removible.", "Desinstala el dispositivo con advertencia desde Administrador y reinicia.", "Desactiva suspensión selectiva USB para probar.", "Instala driver del fabricante si es impresora, capturadora, interfaz de audio o equipo especializado."]
+      },
+      {
+        "h2": "Cuándo sospechar falla física",
+        "paragraphs": ["Si falla en varios equipos y con distintos cables, el problema probablemente está en el dispositivo. En memorias USB con datos importantes, evita formatear antes de intentar recuperación."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Código 43 significa que el USB murió?", "a": "No siempre. Puede ser driver o descriptor fallido, pero si ocurre en varios equipos aumenta la sospecha de hardware."},
+      {"q": "¿Un hub USB puede causar el error?", "a": "Sí. Muchos dispositivos requieren más energía o estabilidad de la que un hub barato entrega."}
+    ],
+    "caption": "Diagnóstico de dispositivo USB no reconocido con puerto, cable, energía y driver."
+  },
+  {
+    "slug": "teclado-no-funciona-windows",
+    "category": "perifericos",
+    "title": "Teclado no funciona en Windows: causas y solución",
+    "meta_description": "Soluciona teclado que no funciona en Windows revisando puerto, filtros, Bluetooth, distribución, drivers, inicio rápido y accesibilidad.",
+    "h1": "Teclado no funciona en Windows: diagnóstico rápido",
+    "summary": "Un teclado puede fallar por puerto, batería, Bluetooth, filtros de accesibilidad, distribución incorrecta, driver o bloqueo de firmware.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["teclado no funciona Windows", "teclado USB no responde", "teclado Bluetooth no escribe", "teclas filtro Windows"],
+    "symptoms": ["El teclado no escribe en ninguna app.", "Funciona en BIOS pero no en Windows.", "Solo algunas teclas fallan o escriben símbolos incorrectos."],
+    "quick_checks": ["Prueba otro puerto.", "Revisa batería si es inalámbrico.", "Desactiva teclas filtro."],
+    "sections": [
+      {
+        "h2": "Comprueba si el fallo es físico o de Windows",
+        "paragraphs": ["Si el teclado funciona en BIOS o pantalla de inicio pero no dentro de Windows, el hardware probablemente está bien y el problema está en configuración, driver o accesibilidad."]
+      },
+      {
+        "h2": "Pasos de solución",
+        "h3": "Empieza por entrada y accesibilidad",
+        "steps": ["Conecta el teclado a otro puerto o equipo.", "Desactiva Teclas filtro y otras opciones de accesibilidad.", "Revisa idioma y distribución del teclado.", "Elimina y vuelve a emparejar si es Bluetooth.", "Desinstala el dispositivo de teclado desde Administrador y reinicia."]
+      },
+      {
+        "h2": "Teclados de laptop",
+        "paragraphs": ["Si el teclado integrado falla pero uno USB funciona, revisa si hay líquido, tecla Fn bloqueada o daño de flex. Evita presionar muchas veces si hubo derrame."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Teclas filtro puede bloquear el teclado?", "a": "Puede hacer que parezca que no responde si Windows ignora pulsaciones breves o repetidas."},
+      {"q": "¿Cambiar idioma arregla teclas raras?", "a": "Sí si el teclado escribe símbolos incorrectos, pero no si no responde en absoluto."}
+    ],
+    "caption": "Diagnóstico de teclado en Windows con puerto, distribución, Bluetooth y accesibilidad."
+  },
+  {
+    "slug": "office-no-abre-se-queda-cargando",
+    "category": "programas",
+    "title": "Office no abre y se queda cargando: solución",
+    "meta_description": "Soluciona Word, Excel u Office que no abre o se queda cargando revisando modo seguro, complementos, reparación, perfil y licencias.",
+    "h1": "Office no abre y se queda cargando: cómo repararlo",
+    "summary": "Office puede quedarse cargando por complementos dañados, perfil corrupto, instalación incompleta, impresora predeterminada o problema de licencia.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["Office no abre se queda cargando", "Word no abre Windows", "Excel se queda iniciando", "reparar Microsoft Office"],
+    "symptoms": ["Word o Excel se quedan en pantalla de inicio.", "Office abre en modo seguro pero no normal.", "Solo falla una aplicación de Office."],
+    "quick_checks": ["Prueba modo seguro de Office.", "Desactiva complementos.", "Revisa impresora predeterminada."],
+    "sections": [
+      {
+        "h2": "Por qué Office queda cargando",
+        "paragraphs": ["Durante el inicio, Office carga complementos, plantillas, impresora predeterminada, perfil y licencia. Si uno falla, la app puede quedar congelada antes de abrir documentos."]
+      },
+      {
+        "h2": "Reparación sin perder documentos",
+        "h3": "Aísla complementos antes de reinstalar",
+        "steps": ["Inicia Word o Excel en modo seguro.", "Desactiva complementos COM y vuelve a abrir normal.", "Cambia temporalmente la impresora predeterminada.", "Ejecuta reparación rápida de Office.", "Si persiste, usa reparación en línea y vuelve a iniciar sesión en la cuenta."]
+      },
+      {
+        "h2": "Si falla solo un archivo",
+        "paragraphs": ["Cuando Office abre bien pero un archivo concreto no, trabaja sobre una copia. Puede tratarse de documento dañado, vínculos externos o macros bloqueadas."]
+      }
+    ],
+    "faq": [
+      {"q": "¿Reparar Office borra mis documentos?", "a": "No. Repara la instalación, no tus archivos personales."},
+      {"q": "¿Los complementos son una causa común?", "a": "Sí. Si Office abre en modo seguro, los complementos son una de las primeras sospechas."}
+    ],
+    "caption": "Diagnóstico de Microsoft Office con modo seguro, complementos y reparación."
+  },
+  {
+    "slug": "error-0x800f081f-net-framework",
+    "category": "codigos-error",
+    "title": "Error 0x800f081f al instalar .NET Framework",
+    "meta_description": "Soluciona el error 0x800f081f al instalar .NET Framework 3.5 en Windows revisando origen de componentes, DISM, ISO y Windows Update.",
+    "h1": "Error 0x800f081f con .NET Framework: solución en Windows",
+    "summary": "El 0x800f081f aparece cuando Windows no encuentra los archivos fuente necesarios para habilitar .NET Framework 3.5 u otros componentes.",
+    "date_published": "2026-08-20",
+    "date_modified": "2026-08-20",
+    "keywords": ["error 0x800f081f .NET Framework", "no se pudo instalar .NET 3.5", "DISM source 0x800f081f", "habilitar .NET Framework Windows 11"],
+    "symptoms": ["Windows no habilita .NET Framework 3.5.", "DISM muestra que no encuentra archivos fuente.", "Programas antiguos piden .NET y no inician."],
+    "quick_checks": ["Conecta Internet estable.", "Revisa si Windows Update está bloqueado.", "Usa una ISO de la misma versión de Windows si necesitas origen local."],
+    "sections": [
+      {
+        "h2": "Qué significa 0x800f081f",
+        "paragraphs": ["Windows necesita archivos de origen para instalar características opcionales. Si no puede descargarlos o no coinciden con la versión del sistema, devuelve 0x800f081f."]
+      },
+      {
+        "h2": "Cómo solucionarlo",
+        "h3": "Usa un origen que coincida con tu versión",
+        "steps": ["Intenta habilitar .NET desde Características de Windows.", "Repara Windows Update si no descarga componentes.", "Monta una ISO de la misma compilación de Windows.", "Ejecuta DISM indicando la carpeta sources\\sxs como origen.", "Reinicia y prueba de nuevo el programa que pedía .NET."]
+      },
+      {
+        "h2": "Errores por ISO incorrecta",
+        "paragraphs": ["Si la ISO no coincide con edición, idioma o compilación, DISM puede seguir fallando. Descarga una imagen actual correspondiente a tu instalación."]
+      }
+    ],
+    "faq": [
+      {"q": "¿.NET Framework 3.5 es lo mismo que .NET moderno?", "a": "No. Muchos programas antiguos requieren .NET Framework 3.5 aunque tengas versiones modernas instaladas."},
+      {"q": "¿Puedo instalarlo sin Internet?", "a": "Sí, usando una ISO compatible como origen local para DISM."}
+    ],
+    "caption": "Diagnóstico del código 0x800f081f con origen de componentes y .NET Framework."
+  }
+]

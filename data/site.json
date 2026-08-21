@@ -1,0 +1,44 @@
+{
+  "name": "Código Error",
+  "tagline": "Diagnóstico tecnológico claro para errores, códigos y fallos reales.",
+  "description": "Código Error reúne guías técnicas en español para encontrar causas y soluciones de errores de Windows, PC, gaming, Android, Internet, navegadores, drivers, periféricos y programas.",
+  "language": "es",
+  "repo_name": "CODIGOERROR",
+  "github_owner": "IAFUTURE10",
+  "site_url": "https://iafuture10.github.io/CODIGOERROR",
+  "base_path": "/CODIGOERROR",
+  "author": "Equipo Código Error",
+  "content": {
+    "target_articles": 2500
+  },
+  "publisher": {
+    "name": "Código Error",
+    "logo": "assets/icons/icon-512.png"
+  },
+  "social": {
+    "twitter_handle": "@codigoerror",
+    "theme_color": "#00020E"
+  },
+  "verification": {
+    "google_site_verification": "REEMPLAZAR_SEARCH_CONSOLE_TOKEN"
+  },
+  "analytics": {
+    "ga4_measurement_id": "G-REEMPLAZAR"
+  },
+  "adsense": {
+    "client_id": "ca-pub-REEMPLAZAR",
+    "publisher_id_for_ads_txt": "pub-0000000000000000",
+    "slots": {
+      "in_article": "REEMPLAZAR_SLOT_IN_ARTICLE",
+      "sidebar": "REEMPLAZAR_SLOT_SIDEBAR",
+      "responsive": "REEMPLAZAR_SLOT_RESPONSIVE"
+    }
+  },
+  "colors": {
+    "background": "#00020E",
+    "deep_purple": "#24046B",
+    "primary_blue": "#003B96",
+    "petrol": "#034A68",
+    "neutral": "#686A79"
+  }
+}

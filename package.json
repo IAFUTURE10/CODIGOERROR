@@ -1,0 +1,13 @@
+{
+  "name": "codigo-error",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python scripts/build.py && node scripts/optimize-images.mjs",
+    "validate": "python scripts/validate.py"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}

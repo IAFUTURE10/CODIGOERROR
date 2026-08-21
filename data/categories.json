@@ -1,0 +1,145 @@
+[
+  {
+    "slug": "windows",
+    "name": "Windows",
+    "nav_label": "Windows",
+    "h1": "Errores de Windows: códigos, causas y soluciones paso a paso",
+    "title": "Errores de Windows: soluciones por código y síntoma | Código Error",
+    "meta_description": "Guías para resolver errores de Windows 10 y Windows 11: pantallas azules, Windows Update, códigos 0x, .NET Framework, drivers y fallos de arranque.",
+    "intro": "Diagnósticos prácticos para fallos comunes de Windows 10 y Windows 11, con prioridad en códigos de error, síntomas visibles y soluciones que no rompen el sistema.",
+    "keywords": ["errores de Windows 11", "solucionar código 0x Windows", "pantalla azul Windows", "Windows Update no funciona"],
+    "caption": "Panel de diagnóstico para errores de Windows, actualizaciones y pantallas azules."
+  },
+  {
+    "slug": "pc-laptops",
+    "name": "PC / Laptops",
+    "nav_label": "PC/Laptops",
+    "h1": "Problemas de PC y laptops: arranque, pantalla, energía y hardware",
+    "title": "Problemas de PC y laptops: diagnóstico de hardware | Código Error",
+    "meta_description": "Soluciones para laptops que encienden sin imagen, PCs que se apagan, fallos de RAM, batería, pantalla negra y problemas de hardware.",
+    "intro": "Guías para separar fallos de energía, memoria, pantalla, placa y periféricos sin desmontar más de lo necesario.",
+    "keywords": ["laptop prende pero no da imagen", "PC se apaga sola", "pantalla negra laptop", "diagnóstico de hardware"],
+    "caption": "Vista técnica de una laptop y componentes durante un diagnóstico de arranque."
+  },
+  {
+    "slug": "gaming",
+    "name": "Gaming",
+    "nav_label": "Gaming",
+    "h1": "Errores gaming: Steam, DirectX, juegos que no abren y rendimiento",
+    "title": "Errores de juegos, Steam y DirectX | Código Error",
+    "meta_description": "Diagnóstico de errores gaming: Steam no abre, fallos de DirectX, juegos que crashean, falta de DLL, pantallas negras y bajo rendimiento.",
+    "intro": "Soluciones orientadas a jugadores en PC: dependencias, controladores, librerías, permisos y conflictos que impiden abrir o mantener estable un juego.",
+    "keywords": ["Steam no abre Windows 11", "error DirectX juegos", "juego no inicia PC", "crash al abrir juego"],
+    "caption": "Interfaz de diagnóstico para fallos de juegos, librerías y lanzadores."
+  },
+  {
+    "slug": "android",
+    "name": "Android",
+    "nav_label": "Android",
+    "h1": "Errores de Android: conexión, Google Play, apps y sistema",
+    "title": "Errores de Android y Google Play: soluciones | Código Error",
+    "meta_description": "Guías para resolver problemas de Android: WiFi conectado sin Internet, Google Play no descarga, apps que se cierran y errores de sincronización.",
+    "intro": "Diagnósticos para teléfonos Android con problemas de red, tienda, almacenamiento, permisos y servicios de Google.",
+    "keywords": ["Android WiFi conectado sin Internet", "Google Play no descarga", "app Android se cierra sola", "error servicios de Google"],
+    "caption": "Panel móvil de diagnóstico para errores de Android y Google Play."
+  },
+  {
+    "slug": "internet",
+    "name": "Internet",
+    "nav_label": "Internet",
+    "h1": "Problemas de Internet: WiFi, DNS, router y conexión inestable",
+    "title": "Problemas de Internet y WiFi: soluciones por síntoma | Código Error",
+    "meta_description": "Soluciones para WiFi conectado sin Internet, DNS que falla, router sin salida, cortes de conexión, IP incorrecta y problemas de red doméstica.",
+    "intro": "Guías para detectar si el fallo está en el equipo, el router, el DNS, la IP local o el proveedor de Internet.",
+    "keywords": ["WiFi conectado sin Internet", "DNS no responde", "router sin Internet", "conexión inestable"],
+    "caption": "Mapa de diagnóstico para conexión WiFi, DNS y salida a Internet."
+  },
+  {
+    "slug": "navegadores",
+    "name": "Navegadores",
+    "nav_label": "Navegadores",
+    "h1": "Errores de navegadores: Chrome, Edge, Firefox y certificados",
+    "title": "Errores de Chrome, Edge y Firefox | Código Error",
+    "meta_description": "Guías para errores de navegador como ERR_CONNECTION_RESET, DNS_PROBE_FINISHED_NXDOMAIN, certificados, caché dañada y extensiones conflictivas.",
+    "intro": "Soluciones para errores de carga, certificados, DNS, perfiles dañados, extensiones y políticas que afectan la navegación.",
+    "keywords": ["ERR_CONNECTION_RESET Chrome", "DNS_PROBE_FINISHED_NXDOMAIN", "Chrome no carga páginas", "error certificado navegador"],
+    "caption": "Diagnóstico visual de errores de navegador, caché, DNS y certificados."
+  },
+  {
+    "slug": "almacenamiento",
+    "name": "Almacenamiento",
+    "nav_label": "Almacenamiento",
+    "h1": "Errores de discos, SSD, USB y almacenamiento en Windows",
+    "title": "Problemas de discos, SSD y almacenamiento | Código Error",
+    "meta_description": "Soluciones para disco al 100%, SSD que no aparece, unidades USB no reconocidas, errores SMART, particiones y almacenamiento lleno.",
+    "intro": "Diagnóstico de unidades lentas, invisibles, llenas o con errores, priorizando prevención de pérdida de datos.",
+    "keywords": ["disco 100 Windows 11", "SSD no aparece BIOS", "USB no reconocido", "error SMART disco"],
+    "caption": "Panel de estado para discos, SSD, particiones y alertas SMART."
+  },
+  {
+    "slug": "graficos",
+    "name": "Gráficos",
+    "nav_label": "Gráficos",
+    "h1": "Errores gráficos: GPU, NVIDIA, AMD, pantalla negra y drivers",
+    "title": "Errores de tarjeta gráfica y drivers GPU | Código Error",
+    "meta_description": "Guías para problemas de NVIDIA, AMD e Intel: driver que no instala, pantalla negra, parpadeo, resolución incorrecta y juegos sin GPU dedicada.",
+    "intro": "Soluciones para diferenciar fallos de controlador, cable, monitor, GPU, configuración de energía y aceleración gráfica.",
+    "keywords": ["driver NVIDIA no instala", "pantalla negra GPU", "AMD driver error", "juego no usa GPU dedicada"],
+    "caption": "Diagnóstico de controlador gráfico, GPU, monitor y salida de video."
+  },
+  {
+    "slug": "audio",
+    "name": "Audio",
+    "nav_label": "Audio",
+    "h1": "Problemas de audio: sin sonido, micrófono, Bluetooth y drivers",
+    "title": "Problemas de audio en Windows y dispositivos | Código Error",
+    "meta_description": "Soluciones para no hay sonido en Windows 11, micrófono que no funciona, audio Bluetooth entrecortado, Realtek y dispositivos predeterminados.",
+    "intro": "Guías para revisar salida, entrada, permisos, mezcla de volumen, servicios y controladores de audio sin reinstalar de más.",
+    "keywords": ["no hay sonido Windows 11", "micrófono no funciona", "audio Bluetooth se corta", "Realtek no aparece"],
+    "caption": "Panel de diagnóstico para salida de audio, micrófono y dispositivos Bluetooth."
+  },
+  {
+    "slug": "drivers",
+    "name": "Drivers",
+    "nav_label": "Drivers",
+    "h1": "Errores de drivers: dispositivos no reconocidos y conflictos",
+    "title": "Errores de drivers y dispositivos no reconocidos | Código Error",
+    "meta_description": "Guías para controladores dañados, dispositivos USB no reconocidos, código 43, código 10, conflictos después de actualizar Windows y drivers faltantes.",
+    "intro": "Soluciones para instalar, revertir o limpiar drivers sin provocar conflictos nuevos.",
+    "keywords": ["dispositivo USB no reconocido", "código 43 Windows", "código 10 administrador de dispositivos", "driver faltante"],
+    "caption": "Árbol de diagnóstico para controladores, dispositivos y errores del administrador."
+  },
+  {
+    "slug": "perifericos",
+    "name": "Periféricos",
+    "nav_label": "Periféricos",
+    "h1": "Errores de periféricos: teclado, mouse, impresoras, cámaras y USB",
+    "title": "Problemas de periféricos y dispositivos externos | Código Error",
+    "meta_description": "Soluciones para teclado que no funciona, mouse desconectado, impresora sin conexión, cámara no detectada y puertos USB con fallos.",
+    "intro": "Diagnósticos para periféricos con fallos físicos, de puerto, permisos, energía o controladores.",
+    "keywords": ["teclado no funciona Windows", "impresora sin conexión", "cámara no detectada", "mouse se desconecta"],
+    "caption": "Diagnóstico de periféricos conectados por USB, Bluetooth y red."
+  },
+  {
+    "slug": "programas",
+    "name": "Programas",
+    "nav_label": "Programas",
+    "h1": "Errores de programas: apps que no abren, se congelan o fallan",
+    "title": "Errores de programas y aplicaciones de Windows | Código Error",
+    "meta_description": "Guías para programas que no abren, Office cargando indefinidamente, errores de instalación, permisos, dependencias y perfiles dañados.",
+    "intro": "Soluciones para aplicaciones de escritorio con fallos de inicio, instalación, dependencias, perfiles y permisos.",
+    "keywords": ["programa no abre Windows", "Office no abre", "app se queda cargando", "error al instalar programa"],
+    "caption": "Panel de diagnóstico para programas que no inician o se quedan cargando."
+  },
+  {
+    "slug": "codigos-error",
+    "name": "Códigos de error",
+    "nav_label": "Códigos",
+    "h1": "Códigos de error: significado, causa probable y solución",
+    "title": "Códigos de error explicados por número y contexto | Código Error",
+    "meta_description": "Directorio de códigos de error 0x, errores de instalación, actualización, red, juegos y sistema con explicación clara y pasos de solución.",
+    "intro": "Un directorio preparado para crecer con códigos concretos, sin mezclar síntomas distintos ni publicar páginas duplicadas.",
+    "keywords": ["código de error 0x", "significado error Windows", "solución código de error", "errores frecuentes PC"],
+    "caption": "Matriz de códigos de error con estado, origen y ruta de solución."
+  }
+]
