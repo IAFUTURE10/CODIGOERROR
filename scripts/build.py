@@ -1673,9 +1673,11 @@ def write_sitemaps() -> None:
     (DOCS / "sitemaps" / "sitemap-pages.xml").write_text(sitemap_urlset(page_routes), encoding="utf-8")
 
     sitemap_paths = ["sitemaps/sitemap-pages.xml"]
+    article_routes: list[tuple[str, str, float]] = []
     for category in CATEGORIES:
         articles = [article for article in ARTICLES if article["category"] == category["slug"]]
         routes = [(article_route(article), article["date_modified"], 0.7) for article in articles]
+        article_routes.extend(routes)
         path = f"sitemaps/sitemap-{category['slug']}.xml"
         (DOCS / path).write_text(sitemap_urlset(routes), encoding="utf-8")
         sitemap_paths.append(path)
@@ -1688,8 +1690,11 @@ def write_sitemaps() -> None:
         + index_entries
         + "\n</sitemapindex>\n"
     )
-    for filename in ("sitemap.xml", "sitemap-index.xml"):
-        (DOCS / filename).write_text(sitemap_index, encoding="utf-8")
+    (DOCS / "sitemap.xml").write_text(
+        sitemap_urlset(page_routes + article_routes),
+        encoding="utf-8",
+    )
+    (DOCS / "sitemap-index.xml").write_text(sitemap_index, encoding="utf-8")
 
 
 def validate_sources() -> None:

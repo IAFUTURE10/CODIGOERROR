@@ -4,6 +4,7 @@ import json
 import re
 from datetime import date
 from pathlib import Path
+from xml.etree import ElementTree
 
 from content_scale import expand_articles
 
@@ -58,6 +59,16 @@ def main() -> None:
     expected_html_count = len(ARTICLES) + len(CATEGORIES) + 7
     if len(html_files) != expected_html_count:
         raise AssertionError(f"Expected {expected_html_count} HTML files, found {len(html_files)}")
+
+    sitemap_root = ElementTree.parse(DOCS / "sitemap.xml").getroot()
+    sitemap_namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+    if sitemap_root.tag != f"{sitemap_namespace}urlset":
+        raise AssertionError("sitemap.xml must be a direct URL set")
+    sitemap_urls = sitemap_root.findall(f"{sitemap_namespace}url")
+    if len(sitemap_urls) != expected_html_count - 1:
+        raise AssertionError(
+            f"Expected {expected_html_count - 1} sitemap URLs, found {len(sitemap_urls)}"
+        )
 
     article_paths: list[Path] = []
     for article in ARTICLES:
