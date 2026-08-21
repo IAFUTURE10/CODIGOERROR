@@ -497,6 +497,22 @@ p { margin: 0 0 16px; color: var(--muted); }
   font-size: 0.84rem;
 }
 
+button.query-chip {
+  appearance: none;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+button.query-chip:hover,
+button.query-chip:focus-visible {
+  border-color: rgba(158, 185, 255, 0.7);
+  background: rgba(0, 59, 150, 0.28);
+  color: #FFFFFF;
+  outline: none;
+}
+
 .search-results {
   position: absolute;
   inset-inline: 0;
@@ -853,6 +869,14 @@ def js() -> str:
     return q.split(/\\s+/).filter((part) => part.length > 2 && haystack.includes(part)).length;
   }
 
+  function rankedResults(query, limit = 7) {
+    return index
+      .map((item) => ({ item, score: score(item, query) }))
+      .filter((entry) => entry.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limit);
+  }
+
   function renderResults(input) {
     const query = input.value.trim();
     const container = input.closest("[data-search-root]").querySelector("[data-search-results]");
@@ -862,11 +886,7 @@ def js() -> str:
       container.innerHTML = "";
       return;
     }
-    const results = index
-      .map((item) => ({ item, score: score(item, query) }))
-      .filter((entry) => entry.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 7);
+    const results = rankedResults(query);
     if (!results.length) {
       container.innerHTML = `<div class="search-result"><strong>Sin resultados exactos</strong><span>Prueba escribir el código, síntoma o categoría con otras palabras.</span></div>`;
       container.classList.add("is-open");
@@ -882,18 +902,38 @@ def js() -> str:
   }
 
   inputs.forEach((input) => {
+    const root = input.closest("[data-search-root]");
+    const submit = root.querySelector("[data-search-submit]");
+    const suggestions = Array.from(root.querySelectorAll("[data-search-query]"));
+
+    async function openBestResult() {
+      const query = input.value.trim();
+      if (!query) {
+        input.focus();
+        return;
+      }
+      await loadIndex();
+      renderResults(input);
+      const best = rankedResults(query, 1)[0];
+      if (best) window.location.href = resultUrl(best.item);
+    }
+
     input.addEventListener("input", () => loadIndex().then(() => renderResults(input)));
     input.addEventListener("focus", () => loadIndex().then(() => renderResults(input)));
     input.addEventListener("keydown", async (event) => {
       if (event.key !== "Enter") return;
-      const query = input.value.trim();
-      if (!query) return;
-      await loadIndex();
-      const best = index
-        .map((item) => ({ item, score: score(item, query) }))
-        .filter((entry) => entry.score > 0)
-        .sort((a, b) => b.score - a.score)[0];
-      if (best) window.location.href = resultUrl(best.item);
+      event.preventDefault();
+      await openBestResult();
+    });
+
+    submit.addEventListener("click", openBestResult);
+    suggestions.forEach((suggestion) => {
+      suggestion.addEventListener("click", async () => {
+        input.value = suggestion.dataset.searchQuery || suggestion.textContent.trim();
+        input.focus();
+        await loadIndex();
+        renderResults(input);
+      });
     });
   });
 
@@ -1047,18 +1087,26 @@ def footer() -> str:
 """.strip()
 
 
-def search_component(label: str = "Busca por código, síntoma o programa") -> str:
-    examples = ["0xc000007b", "WiFi conectado sin Internet", "Steam no abre", "ERR_CONNECTION_RESET"]
-    chips = "".join(f'<span class="query-chip">{esc(example)}</span>' for example in examples)
+def search_component(
+    label: str = "Busca por código, síntoma o programa",
+    examples: list[str] | None = None,
+    component_id: str = "search-main",
+) -> str:
+    examples = examples or ["0xc000007b", "WiFi conectado sin Internet", "Steam no abre", "ERR_CONNECTION_RESET"]
+    results_id = f"{component_id}-results"
+    chips = "".join(
+        f'<button class="query-chip" type="button" data-search-query="{esc(example)}">{esc(example)}</button>'
+        for example in examples[:4]
+    )
     return f"""
 <div class="diagnostic-search" data-search-root>
-  <label class="eyebrow" for="search-main">{esc(label)}</label>
+  <label class="eyebrow" for="{esc(component_id)}">{esc(label)}</label>
   <div class="search-box">
-    <input id="search-main" data-search-input type="search" placeholder="Escribe un error, código o problema..." autocomplete="off">
-    <button type="button" aria-label="Buscar diagnóstico">Buscar</button>
+    <input id="{esc(component_id)}" data-search-input type="search" placeholder="Escribe un error, código o problema..." autocomplete="off" aria-controls="{esc(results_id)}">
+    <button type="button" data-search-submit aria-label="Buscar diagnóstico">Buscar</button>
   </div>
   <div class="search-meta" aria-label="Ejemplos de búsqueda">{chips}</div>
-  <div class="search-results" data-search-results role="listbox"></div>
+  <div id="{esc(results_id)}" class="search-results" data-search-results role="listbox" aria-live="polite"></div>
 </div>
 """.strip()
 
@@ -1224,7 +1272,6 @@ def render_home() -> None:
 def render_category(category: dict) -> None:
     articles = [article for article in ARTICLES if article["category"] == category["slug"]]
     cards = "\n".join(article_card(article) for article in articles)
-    keyword_html = "".join(f'<span class="tag">{esc(keyword)}</span>' for keyword in category["keywords"])
     body = f"""
 <section class="page-hero">
   <div class="container">
@@ -1234,7 +1281,11 @@ def render_category(category: dict) -> None:
         <p class="eyebrow">Categoría de diagnóstico</p>
         <h1>{esc(category['h1'])}</h1>
         <p class="lead">{esc(category['intro'])}</p>
-        <div class="search-meta">{keyword_html}</div>
+        {search_component(
+            f"Busca códigos y problemas de {category['name']}",
+            examples=category["keywords"],
+            component_id=f"search-{category['slug']}",
+        )}
       </div>
       <figure class="category-figure">
         <img src="{asset_url(f"assets/images/category-{category['slug']}.{IMAGE_EXT}")}" alt="{esc(category['caption'])}" loading="lazy" decoding="async" width="640" height="360">

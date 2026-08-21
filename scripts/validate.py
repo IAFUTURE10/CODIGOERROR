@@ -103,6 +103,17 @@ def main() -> None:
         if not sitemap.exists():
             raise AssertionError(f"Missing category sitemap: {sitemap}")
 
+        category_page = DOCS / category["slug"] / "index.html"
+        category_html = read(category_page)
+        assert_contains(category_html, "data-search-root", category_page)
+        assert_contains(category_html, "data-search-submit", category_page)
+        assert_contains(category_html, "data-search-query", category_page)
+
+    search_script_path = DOCS / "assets" / "js" / "search.js"
+    search_script = read(search_script_path)
+    assert_contains(search_script, 'querySelector("[data-search-submit]")', search_script_path)
+    assert_contains(search_script, 'querySelectorAll("[data-search-query]")', search_script_path)
+
     for path in sampled_article_paths:
         text = read(path)
         assert_contains(text, '"@type":"Article"', path)
