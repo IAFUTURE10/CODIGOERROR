@@ -48,6 +48,8 @@ def main() -> None:
         raise AssertionError("sitemap-index.xml was not generated")
     if not (DOCS / "sitemap.xml").exists():
         raise AssertionError("sitemap.xml was not generated")
+    if not (DOCS / "sitemap-urls.txt").exists():
+        raise AssertionError("sitemap-urls.txt was not generated")
     if not (DOCS / "robots.txt").exists():
         raise AssertionError("robots.txt was not generated")
     if not (DOCS / "ads.txt").exists():
@@ -69,6 +71,22 @@ def main() -> None:
         raise AssertionError(
             f"Expected {expected_html_count - 1} sitemap URLs, found {len(sitemap_urls)}"
         )
+    sitemap_locs = [
+        entry.findtext(f"{sitemap_namespace}loc", default="") for entry in sitemap_urls
+    ]
+    text_sitemap_urls = [
+        line.strip()
+        for line in read(DOCS / "sitemap-urls.txt").splitlines()
+        if line.strip()
+    ]
+    if len(text_sitemap_urls) != expected_html_count - 1:
+        raise AssertionError(
+            f"Expected {expected_html_count - 1} text sitemap URLs, found {len(text_sitemap_urls)}"
+        )
+    if len(text_sitemap_urls) != len(set(text_sitemap_urls)):
+        raise AssertionError("sitemap-urls.txt must not contain duplicate URLs")
+    if text_sitemap_urls != sitemap_locs:
+        raise AssertionError("sitemap-urls.txt must match sitemap.xml exactly")
 
     article_paths: list[Path] = []
     for article in ARTICLES:

@@ -1690,8 +1690,10 @@ def write_sitemaps() -> None:
         + index_entries
         + "\n</sitemapindex>\n"
     )
-    (DOCS / "sitemap.xml").write_text(
-        sitemap_urlset(page_routes + article_routes),
+    all_routes = page_routes + article_routes
+    (DOCS / "sitemap.xml").write_text(sitemap_urlset(all_routes), encoding="utf-8")
+    (DOCS / "sitemap-urls.txt").write_text(
+        "\n".join(absolute_url(route) for route, _, _ in all_routes) + "\n",
         encoding="utf-8",
     )
     (DOCS / "sitemap-index.xml").write_text(sitemap_index, encoding="utf-8")

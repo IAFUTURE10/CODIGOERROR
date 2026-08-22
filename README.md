@@ -14,7 +14,7 @@ Código Error es una web estática de diagnóstico tecnológico en español, pre
 - `Article`, `WebSite` y `Organization` schema.
 - Imágenes locales WebP con `alt`, `figcaption`, `loading="lazy"` y dimensiones.
 - `robots.txt`, `ads.txt`, `site.webmanifest`, favicon e iconos placeholder.
-- `sitemap.xml` único con todas las URLs, más `sitemap-index.xml` y sitemaps separados por categoría como respaldo.
+- `sitemap.xml` único con todas las URLs, `sitemap-urls.txt` como alternativa de lectura directa, más `sitemap-index.xml` y sitemaps separados por categoría como respaldo.
 - Página 404, privacidad, cookies, contacto y sobre el proyecto.
 - Workflow de GitHub Pages con generación y validación automática.
 
@@ -137,6 +137,12 @@ Cuando la URL esté publicada:
 
 ```text
 https://iafuture10.github.io/sitemap.xml
+```
+
+Si Search Console conserva un error temporal para esa dirección, envía también la ruta alternativa en formato texto. Contiene exactamente las mismas URLs y evita cualquier problema de interpretación XML:
+
+```text
+https://iafuture10.github.io/CODIGOERROR/sitemap-urls.txt
 ```
 
 ## AdSense
