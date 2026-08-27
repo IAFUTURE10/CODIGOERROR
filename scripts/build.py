@@ -1012,6 +1012,8 @@ def render_head(meta: dict, schemas: list[dict]) -> str:
     )
     return f"""
 <head>
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/63029c5cae366ef7f38f04401f9d9185/script.js"></script>
+  <meta name="google-adsense-account" content="{esc(SITE['adsense']['client_id'])}">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
