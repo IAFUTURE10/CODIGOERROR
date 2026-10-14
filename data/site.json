@@ -1,15 +1,17 @@
 {
   "name": "Código Error",
   "tagline": "Diagnóstico tecnológico claro para errores, códigos y fallos reales.",
-  "description": "Código Error reúne guías técnicas en español para encontrar causas y soluciones de errores de Windows, PC, gaming, Android, Internet, navegadores, drivers, periféricos y programas.",
+  "description": "Guías prácticas de diagnóstico para WiFi, Windows, Android, juegos, micrófono, monitores y unidades USB: observa, compara y conserva tus datos.",
   "language": "es",
   "repo_name": "CODIGOERROR",
   "github_owner": "IAFUTURE10",
   "site_url": "https://iafuture10.github.io/CODIGOERROR",
   "base_path": "/CODIGOERROR",
-  "author": "Equipo Código Error",
+  "author": "Código Error",
   "content": {
-    "target_articles": 2500
+    "mode": "editorial-library",
+    "guides_file": "reviewed-guides.json",
+    "legacy_routes_file": "retired-routes.json"
   },
   "publisher": {
     "name": "Código Error",
@@ -40,5 +42,7 @@
     "primary_blue": "#003B96",
     "petrol": "#034A68",
     "neutral": "#686A79"
-  }
+  },
+  "advertising_enabled": false,
+  "analytics_enabled": false
 }

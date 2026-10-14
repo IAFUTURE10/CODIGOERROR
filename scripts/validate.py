@@ -1,191 +1,110 @@
+"""Validate the complete publication boundary, links and source contracts."""
 from __future__ import annotations
-
 import json
 import re
-from datetime import date
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit, unquote
 from xml.etree import ElementTree
-
-from content_scale import expand_articles
-
-
 ROOT = Path(__file__).resolve().parents[1]
-DOCS = ROOT / "docs"
-SITE = json.loads((ROOT / "data" / "site.json").read_text(encoding="utf-8"))
-SEED_ARTICLES = json.loads((ROOT / "data" / "articles.json").read_text(encoding="utf-8"))
-CATEGORIES = json.loads((ROOT / "data" / "categories.json").read_text(encoding="utf-8"))
-ARTICLES = expand_articles(
-    SEED_ARTICLES,
-    CATEGORIES,
-    int(SITE.get("content", {}).get("target_articles", len(SEED_ARTICLES))),
-    date.today().isoformat(),
-)
+DOCS = ROOT / 'docs'
+NS = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+def data(name): return json.loads((ROOT / 'data' / name).read_text(encoding='utf-8'))
+def require(condition, message):
+    if not condition: raise AssertionError(message)
+def guide_route(g): return g['category'] + '/' + g['slug']
+def validate_data():
+    guides, categories, legacy = data('reviewed-guides.json'), data('categories.json'), data('retired-routes.json')
+    require(bool(guides), 'Editorial library is empty')
+    routes, titles = set(), set()
+    categories = {c['slug'] for c in categories}
+    checked = {s['url'] for s in data('source-checks.json') if s['status'] == 200}
+    allowed_hosts = {'support.microsoft.com', 'learn.microsoft.com', 'support.google.com', 'help.steampowered.com'}
+    for g in guides:
+        path = guide_route(g)
+        require(re.fullmatch(r'[a-z0-9-]+/[a-z0-9-]+', path), 'Unsafe route: ' + path)
+        require(path not in routes and g['title'] not in titles, 'Duplicate editorial guide: ' + path)
+        routes.add(path); titles.add(g['title'])
+        require(g['category'] in categories, 'Unknown category: ' + path)
+        require(not g.get('generated'), 'Automatically expanded guide in active library')
+        for key in ('title', 'h1', 'summary', 'meta_description', 'updated'):
+            require(isinstance(g.get(key), str) and g[key].strip(), f'{path}: missing {key}')
+        require(re.fullmatch(r'\d{4}-\d{2}-\d{2}', g['updated']), 'Missing editorial date: ' + path)
+        require(len(g['steps']) >= 4, 'Guide needs a diagnostic sequence: ' + path)
+        for s in g['steps']:
+            for key in ('title', 'action', 'expected', 'next', 'undo'):
+                require(bool(s.get(key, '').strip()), f'{path}: step missing {key}')
+        for key in ('scope', 'symptoms', 'quick_checks', 'stop_conditions', 'sources'):
+            require(bool(g.get(key)), f'{path}: missing {key}')
+        for source in g['sources']:
+            u = urlsplit(source['url'])
+            require(u.scheme == 'https' and u.hostname in allowed_hosts, 'Non-primary reference: ' + source['url'])
+            require(source['url'] in checked, 'Reference lacks recorded HTTP check: ' + source['url'])
+    require(len(legacy) == len(set(legacy)), 'Duplicate legacy routes')
+    require(all(re.fullmatch(r'[a-z0-9-]+/[a-z0-9-]+', p) for p in legacy), 'Unsafe legacy route')
 
+class Page(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.links = []; self.ids = set(); self.robots = ''; self.canonical = ''; self.h1 = 0; self.title = False; self.description = False; self.scripts = []
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if 'id' in a:
+            require(a['id'] not in self.ids, 'Duplicate element ID: ' + a['id']); self.ids.add(a['id'])
+        if tag == 'meta' and a.get('name') == 'robots': self.robots = a.get('content', '')
+        if tag == 'meta' and a.get('name') == 'description': self.description = bool(a.get('content'))
+        if tag == 'link' and a.get('rel') == 'canonical': self.canonical = a.get('href', '')
+        if tag == 'h1': self.h1 += 1
+        if tag == 'title': self.title = True
+        if tag in ('a', 'link') and a.get('href'): self.links.append(a['href'])
+        if tag in ('script', 'img') and a.get('src'): self.links.append(a['src'])
+        if tag == 'script' and a.get('src'): self.scripts.append(a['src'])
 
-def read(path: Path) -> str:
-    return path.read_text(encoding="utf-8")
-
-
-def assert_contains(text: str, needle: str, path: Path) -> None:
-    if needle not in text:
-        raise AssertionError(f"{path} missing {needle}")
-
-
-def main() -> None:
-    configured_values = [
-        SITE["verification"]["google_site_verification"],
-        SITE["analytics"]["ga4_measurement_id"],
-        SITE["adsense"]["client_id"],
-        SITE["adsense"]["publisher_id_for_ads_txt"],
-        *SITE["adsense"]["slots"].values(),
-    ]
-    if any("REEMPLAZAR" in value or value == "pub-0000000000000000" for value in configured_values):
-        raise AssertionError("Google service identifiers must be configured before production")
-
-    if not (DOCS / "index.html").exists():
-        raise AssertionError("docs/index.html was not generated")
-    if not (DOCS / "sitemap-index.xml").exists():
-        raise AssertionError("sitemap-index.xml was not generated")
-    if not (DOCS / "sitemap.xml").exists():
-        raise AssertionError("sitemap.xml was not generated")
-    if not (DOCS / "sitemap-urls.txt").exists():
-        raise AssertionError("sitemap-urls.txt was not generated")
-    if not (DOCS / "robots.txt").exists():
-        raise AssertionError("robots.txt was not generated")
-    if not (DOCS / "ads.txt").exists():
-        raise AssertionError("ads.txt was not generated")
-    if not (DOCS / "site.webmanifest").exists():
-        raise AssertionError("site.webmanifest was not generated")
-
-    html_files = list(DOCS.rglob("*.html"))
-    expected_html_count = len(ARTICLES) + len(CATEGORIES) + 7
-    if len(html_files) != expected_html_count:
-        raise AssertionError(f"Expected {expected_html_count} HTML files, found {len(html_files)}")
-
-    sitemap_root = ElementTree.parse(DOCS / "sitemap.xml").getroot()
-    sitemap_namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
-    if sitemap_root.tag != f"{sitemap_namespace}urlset":
-        raise AssertionError("sitemap.xml must be a direct URL set")
-    sitemap_urls = sitemap_root.findall(f"{sitemap_namespace}url")
-    if len(sitemap_urls) != expected_html_count - 1:
-        raise AssertionError(
-            f"Expected {expected_html_count - 1} sitemap URLs, found {len(sitemap_urls)}"
-        )
-    sitemap_locs = [
-        entry.findtext(f"{sitemap_namespace}loc", default="") for entry in sitemap_urls
-    ]
-    text_sitemap_urls = [
-        line.strip()
-        for line in read(DOCS / "sitemap-urls.txt").splitlines()
-        if line.strip()
-    ]
-    if len(text_sitemap_urls) != expected_html_count - 1:
-        raise AssertionError(
-            f"Expected {expected_html_count - 1} text sitemap URLs, found {len(text_sitemap_urls)}"
-        )
-    if len(text_sitemap_urls) != len(set(text_sitemap_urls)):
-        raise AssertionError("sitemap-urls.txt must not contain duplicate URLs")
-    if text_sitemap_urls != sitemap_locs:
-        raise AssertionError("sitemap-urls.txt must match sitemap.xml exactly")
-
-    article_paths: list[Path] = []
-    for article in ARTICLES:
-        path = DOCS / article["category"] / article["slug"] / "index.html"
-        if not path.exists():
-            raise AssertionError(f"Missing article page: {path}")
-        article_paths.append(path)
-
-    source_titles = [article["title"] for article in ARTICLES]
-    source_descriptions = [article["meta_description"] for article in ARTICLES]
-    if len(source_titles) != len(set(source_titles)):
-        raise AssertionError("Article titles must be unique")
-    if len(source_descriptions) != len(set(source_descriptions)):
-        raise AssertionError("Article meta descriptions must be unique")
-
-    utility_paths = [
-        DOCS / "index.html",
-        DOCS / "publicaciones" / "index.html",
-        DOCS / "404.html",
-    ]
-    utility_paths.extend(DOCS / category["slug"] / "index.html" for category in CATEGORIES)
-    utility_paths.extend(
-        DOCS / route / "index.html"
-        for route in ["sobre-codigo-error", "contacto", "privacidad", "cookies"]
-    )
-
-    sampled_article_paths: list[Path] = []
-    for category in CATEGORIES:
-        category_paths = [
-            path for article, path in zip(ARTICLES, article_paths)
-            if article["category"] == category["slug"]
-        ]
-        sampled_article_paths.extend([category_paths[0], category_paths[len(category_paths) // 2], category_paths[-1]])
-
-    for path in utility_paths + sampled_article_paths:
-        text = read(path)
-        title = re.search(r"<title>(.*?)</title>", text, re.S)
-        description = re.search(r'<meta name="description" content="(.*?)">', text, re.S)
-        h1 = re.search(r"<h1[^>]*>", text)
-        if not title or not title.group(1).strip():
-            raise AssertionError(f"{path} missing title")
-        if not description or not description.group(1).strip():
-            raise AssertionError(f"{path} missing meta description")
-        if not h1:
-            raise AssertionError(f"{path} missing H1")
-        assert_contains(text, '<link rel="canonical"', path)
-        assert_contains(text, 'application/ld+json', path)
-        assert_contains(text, 'og:title', path)
-        assert_contains(text, 'twitter:card', path)
-        if re.search(r"assets/images/[^\"']+\.png", text):
-            raise AssertionError(f"{path} should use WebP images for content imagery")
-
-    for category in CATEGORIES:
-        sitemap = DOCS / "sitemaps" / f"sitemap-{category['slug']}.xml"
-        if not sitemap.exists():
-            raise AssertionError(f"Missing category sitemap: {sitemap}")
-
-        category_page = DOCS / category["slug"] / "index.html"
-        category_html = read(category_page)
-        assert_contains(category_html, "data-search-root", category_page)
-        assert_contains(category_html, "data-search-submit", category_page)
-        assert_contains(category_html, "data-search-query", category_page)
-
-    search_script_path = DOCS / "assets" / "js" / "search.js"
-    search_script = read(search_script_path)
-    assert_contains(search_script, 'querySelector("[data-search-submit]")', search_script_path)
-    assert_contains(search_script, 'querySelectorAll("[data-search-query]")', search_script_path)
-
-    for path in sampled_article_paths:
-        text = read(path)
-        assert_contains(text, '"@type":"Article"', path)
-        assert_contains(text, '"@type":"BreadcrumbList"', path)
-        assert_contains(text, "<figcaption>", path)
-        assert_contains(text, ".webp", path)
-        assert_contains(text, 'loading="lazy"', path)
-        for image_tag in re.findall(r"<img\b[^>]*>", text):
-            if 'width="' not in image_tag or 'height="' not in image_tag:
-                raise AssertionError(f"{path} contains an image without stable dimensions")
-        assert_contains(text, SITE["adsense"]["client_id"], path)
-        assert_contains(text, SITE["adsense"]["slots"]["in_article"], path)
-        assert_contains(text, SITE["adsense"]["slots"]["sidebar"], path)
-        assert_contains(text, "(adsbygoogle = window.adsbygoogle || []).push({});", path)
-        if len(re.findall(r"<h2", text)) < 4:
-            raise AssertionError(f"{path} should contain multiple H2 headings")
-        if len(re.findall(r"<h3", text)) < 2:
-            raise AssertionError(f"{path} should contain H3 headings")
-
-    search_index = json.loads((DOCS / "search-index.json").read_text(encoding="utf-8"))
-    if len(search_index) != len(ARTICLES):
-        raise AssertionError("Search index count does not match articles")
-
-    if list((DOCS / "assets" / "images").glob("*.png")):
-        raise AssertionError("Content images should be converted to WebP")
-
-    print(
-        f"Validated {len(html_files)} HTML routes, {len(ARTICLES)} unique articles, "
-        f"{len(sampled_article_paths)} article pages in depth and {len(CATEGORIES)} category sitemaps."
-    )
-
-
-if __name__ == "__main__":
-    main()
+def main():
+    validate_data()
+    site, guides, legacy = data('site.json'), data('reviewed-guides.json'), data('retired-routes.json')
+    origin = site['site_url'].rstrip('/') + '/'; base = site['base_path'].rstrip('/')
+    active = {guide_route(g) for g in guides}
+    expected = {'', 'publicaciones', 'cuaderno-diagnostico'} | active
+    root = ElementTree.parse(DOCS / 'sitemap.xml').getroot()
+    require(root.tag.endswith('urlset'), 'Main sitemap must contain URLs')
+    sitemap_urls = [e.text for e in root.findall('sm:url/sm:loc', NS)]
+    require(len(sitemap_urls) == len(set(sitemap_urls)), 'Duplicate sitemap entries')
+    require(set(sitemap_urls) == {origin + (p + '/' if p else '') for p in expected}, 'Sitemap exposes retired or utility routes')
+    require((DOCS / 'sitemap-urls.txt').read_text().splitlines() == sitemap_urls, 'Text sitemap differs from XML')
+    search = json.loads((DOCS / 'search-index.json').read_text())
+    require({s['p'].rstrip('/') for s in search} == active, 'Search exposes retired guides')
+    paths = list(DOCS.rglob('*.html')); parsed = {}; indexable = set()
+    for path in paths:
+        text = path.read_text(encoding='utf-8'); p = Page(); p.feed(text); parsed[path.resolve()] = p
+        require(p.title and p.description and p.h1 == 1, 'Missing metadata or unique H1: ' + str(path))
+        require('adsbygoogle' not in text and 'googletagmanager' not in text and 'cdn-cookieyes' not in text, 'Unreviewed service loader: ' + str(path))
+        require(not any(urlsplit(src).netloc for src in p.scripts), 'External executable script: ' + str(path))
+        rel = path.relative_to(DOCS).as_posix()
+        path_route = '' if rel == 'index.html' else rel.removesuffix('/index.html')
+        if 'noindex' not in p.robots:
+            indexable.add(path_route)
+            require(p.canonical == origin + (path_route + '/' if path_route else ''), 'Canonical mismatch: ' + str(path))
+        if path_route in set(legacy) - active:
+            require('noindex' in p.robots and 'application/ld+json' not in text, 'Retired page still acts as a publication: ' + path_route)
+    require(indexable == expected, 'HTML publication boundary differs from sitemap')
+    for path, page in parsed.items():
+        for link in page.links:
+            u = urlsplit(link)
+            if u.scheme or u.netloc: continue
+            if u.path.startswith('/'):
+                require(u.path == base or u.path.startswith(base + '/'), 'Link escapes project base: ' + link)
+                target = DOCS / unquote(u.path[len(base):].lstrip('/'))
+            else: target = path.parent / unquote(u.path)
+            if target.is_dir(): target /= 'index.html'
+            require(target.exists(), f'Broken link in {path}: {link}')
+            if u.fragment and target.suffix == '.html':
+                require(unquote(u.fragment) in parsed[target.resolve()].ids, f'Broken anchor in {path}: {link}')
+    for g in guides:
+        text = (DOCS / guide_route(g) / 'index.html').read_text()
+        require('application/ld+json' in text, 'Guide missing article schema')
+        require(all(s['url'].replace('&', '&amp;') in text for s in g['sources']), 'Guide omitted references')
+    for sitemap in (DOCS / 'sitemaps').glob('*.xml'):
+        locs = [e.text for e in ElementTree.parse(sitemap).getroot().findall('sm:url/sm:loc', NS)]
+        require(set(locs) <= set(sitemap_urls), 'Category sitemap leaks retired URLs')
+    print(f'Validated all {len(paths)} HTML pages, all local links/anchors, {len(active)} guides and {len(expected)} indexable URLs; retired pages have no advertising or article schema.')
+if __name__ == '__main__': main()

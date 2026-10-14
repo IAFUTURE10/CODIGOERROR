@@ -1,0 +1,693 @@
+[
+  {
+    "slug": "wifi-conectado-sin-internet-windows-11",
+    "category": "internet",
+    "title": "WiFi conectado sin Internet: separar equipo, router y proveedor",
+    "h1": "WiFi conectado sin Internet: separar equipo, router y proveedor",
+    "meta_description": "Comprueba si el corte afecta a una web, a tu PC o a toda la red antes de cambiar DNS o reiniciar el router.",
+    "summary": "Comprueba si el corte afecta a una web, a tu PC o a toda la red antes de cambiar DNS o reiniciar el router.",
+    "scope": [
+      "Windows 11 y red doméstica que administras. Los nombres de menús pueden variar.",
+      "Una red de empresa, universidad u hotel puede requerir autorización: consulta a su administrador."
+    ],
+    "symptoms": [
+      "Windows muestra conexión WiFi, pero dos sitios diferentes no cargan.",
+      "El teléfono puede navegar con datos móviles; eso no demuestra que el WiFi funcione."
+    ],
+    "quick_checks": [
+      "Guarda trabajos abiertos antes de reiniciar equipos.",
+      "Anota hora, redes afectadas y mensaje exacto, sin publicar la contraseña WiFi."
+    ],
+    "steps": [
+      {
+        "title": "1. Comprueba más de un destino",
+        "action": "Abre dos sitios conocidos y distintos en el PC. Si una aplicación sigue conectada, anótalo. Una sola web caída no demuestra un fallo de Internet.",
+        "expected": "Dos sitios fallan, o falla solo uno.",
+        "next": "Si falla uno, espera o consulta su soporte. Si fallan ambos, compara dispositivos en el paso 2.",
+        "undo": "Solo es una observación; no cambia la configuración."
+      },
+      {
+        "title": "2. Compara con otro dispositivo usando el mismo WiFi",
+        "action": "Conecta un teléfono a la misma red y desactiva sus datos móviles temporalmente. Abre los mismos sitios. Confirma que no esté usando otra red o una VPN.",
+        "expected": "El teléfono y el PC fallan juntos, o solo falla el PC.",
+        "next": "Si ambos fallan, comprueba primero si la red requiere un portal legítimo en el paso 3; si no, pasa al router en el paso 5. Si solo falla el PC, continúa en el paso 3.",
+        "undo": "Vuelve a activar los datos móviles al terminar la comparación."
+      },
+      {
+        "title": "3. Revisa conexión y portal de acceso",
+        "action": "En Configuración > Red e Internet, confirma la red y que el modo avión esté desactivado. En hoteles o redes invitadas abre el navegador y busca el portal de acceso. No aceptes un certificado inválido ni introduzcas credenciales en una URL inesperada.",
+        "expected": "Aparece un portal esperado o sigue sin haber acceso.",
+        "next": "Completa solo un portal que reconozcas. Si no hay portal, comprueba VPN/proxy en el paso 4.",
+        "undo": "No olvides la red ni borres contraseñas como parte de esta prueba."
+      },
+      {
+        "title": "4. Compara VPN y proxy que hayas configurado tú",
+        "action": "Anota el estado de tu VPN y proxy. Si administras el equipo, pausa solo tu VPN un momento o revisa Configuración > Red e Internet > Proxy. No alteres políticas de una organización. Repite la comparación.",
+        "expected": "Con la VPN pausada carga la web, o el problema persiste.",
+        "next": "Si mejora, restaura la VPN y consulta su configuración/soporte. Si persiste y solo falla el PC, reconecta al mismo WiFi, reinicia el PC una vez con tus archivos guardados y ve al paso 6. No reinicies el router cuando la comparación ya apunta al PC.",
+        "undo": "Restaura de inmediato el estado previo de VPN/proxy; no desactives firewall o antivirus."
+      },
+      {
+        "title": "5. Observa el router antes de reiniciarlo",
+        "action": "Comprueba sus luces y el estado de los cables externos sin desmontar. Si administras la red, avisa a quienes la usan. Reinicia desde su interfaz o siguiendo el manual; no pulses Reset y no retires energía si el equipo indica una actualización.",
+        "expected": "Los indicadores recuperan el estado normal o sigue sin haber salida.",
+        "next": "Espera el tiempo de arranque del fabricante. Si todos siguen sin acceso, registra las luces y consulta al proveedor.",
+        "undo": "Un reinicio interrumpe llamadas y descargas. No modifica ajustes; un reset de fábrica sí los borraría y no forma parte de esta guía."
+      },
+      {
+        "title": "6. Decide qué soporte necesita la evidencia",
+        "action": "Registra qué dispositivo falló, con qué red, desde cuándo y si el reinicio cambió algo. Si puedes probar el PC en otra red de confianza, hazlo sin desinstalar el adaptador.",
+        "expected": "El PC funciona en otra red, o falla en ambas.",
+        "next": "Funciona en otra: prioriza router/proveedor. Falla en ambas con otros dispositivos funcionando: usa el diagnóstico de red de Windows y el soporte del fabricante con tus observaciones.",
+        "undo": "Desconecta la red de prueba y vuelve a tu red habitual."
+      }
+    ],
+    "stop_conditions": [
+      "Detente si no administras la red o dependes de ella para una llamada/servicio crítico.",
+      "No cambies DNS, drivers ni restablezcas toda la red sin una hipótesis concreta y una copia de la configuración."
+    ],
+    "faq": [
+      {
+        "question": "¿Una conexión WiFi implica tener Internet?",
+        "answer": "No. Solo confirma el enlace con el punto de acceso. Comparar otro dispositivo en esa misma red ayuda a localizar dónde falla la salida."
+      },
+      {
+        "question": "¿Conviene poner DNS público de inmediato?",
+        "answer": "No. No arregla un cable WAN desconectado o una caída del proveedor y puede incumplir políticas de la red. Primero delimita el fallo."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Microsoft: solucionar conexiones WiFi en Windows",
+        "url": "https://support.microsoft.com/en-us/windows/experience/connectivity-networking/fix-wi-fi-connection-issues-in-windows"
+      }
+    ],
+    "updated": "2026-10-14",
+    "keywords": [
+      "WiFi conectado sin Internet: separar equipo, router y proveedor",
+      "internet"
+    ]
+  },
+  {
+    "slug": "usb-pide-formatear-proteger-datos",
+    "category": "almacenamiento",
+    "title": "El USB pide formatear: qué observar sin borrar tus archivos",
+    "h1": "El USB pide formatear: qué observar sin borrar tus archivos",
+    "meta_description": "Una petición de formato no confirma que el USB esté vacío. Cancela, comprueba puerto y lector y decide si necesitas recuperar datos.",
+    "summary": "Una petición de formato no confirma que el USB esté vacío. Cancela, comprueba puerto y lector y decide si necesitas recuperar datos.",
+    "scope": [
+      "Unidad USB o tarjeta SD que antes contenía archivos.",
+      "Esta guía no repara particiones ni recupera datos: evita cambios que reduzcan las opciones de recuperación."
+    ],
+    "symptoms": [
+      "Windows pide formatear una unidad antes de usarla.",
+      "La unidad aparece con capacidad inesperada o como RAW."
+    ],
+    "quick_checks": [
+      "Cancela la petición de formato. No inicialices la unidad ni copies archivos sobre ella.",
+      "Define si necesitas los datos. Si no conoces su contenido, trátala como una unidad con datos importantes."
+    ],
+    "steps": [
+      {
+        "title": "1. Para las escrituras y registra el aviso",
+        "action": "Cierra el diálogo con Cancelar y anota la letra de unidad, capacidad y texto del aviso. No pruebes herramientas que prometen reparar automáticamente ni aceptes inicializar el disco.",
+        "expected": "La unidad continúa conectada y no has iniciado un formato.",
+        "next": "Si hay datos importantes, prioriza recuperación y evita una serie de intentos. Si no hay señales físicas, continúa con una comprobación de conexión.",
+        "undo": "Cancelar no altera los archivos. No hay cambios que revertir."
+      },
+      {
+        "title": "2. Observa síntomas físicos",
+        "action": "Escucha sin desmontar. Un disco mecánico con clics repetidos, desconexiones, olor, calor inusual o daño por líquido merece detenerse. Una unidad flash no tiene piezas móviles: un clic no es un síntoma aplicable a ella.",
+        "expected": "Hay señales físicas, o la unidad parece estable.",
+        "next": "Con señales físicas y datos importantes, desconecta y consulta recuperación profesional. Sin ellas, prueba una conexión directa.",
+        "undo": "Deja de alimentarla si hay daño evidente; no sigas conectándola para confirmar una y otra vez."
+      },
+      {
+        "title": "3. Haz una sola comparación de puerto o lector",
+        "action": "Expulsa de forma segura cuando sea posible y prueba un puerto directo del mismo PC, evitando un hub. Para una SD, prueba otro lector compatible si ya lo tienes. No cambies simultáneamente equipo, cable y lector: perderías la pista de qué ayudó.",
+        "expected": "La unidad abre normalmente, no aparece o vuelve a pedir formato.",
+        "next": "Si abre, copia primero los archivos prioritarios a otra unidad sana y verifica que las copias abran. Si repite el aviso, continúa con observación en Windows.",
+        "undo": "Vuelve a desconectarla de forma segura. No formatees la unidad para comprobar el puerto."
+      },
+      {
+        "title": "4. Mira el estado en Administración de discos",
+        "action": "En Windows, pulsa Win+X > Administración de discos. Identifica la unidad por capacidad y conexión; puedes desconectarla antes y comparar después para evitar confundirla con el disco del sistema. Rechaza cualquier diálogo de inicialización.",
+        "expected": "Aparece RAW, sin asignar, sin medio o con un sistema de archivos que no reconoce Windows.",
+        "next": "Registra exactamente ese estado. RAW o sin asignar no prueba que los datos hayan desaparecido. Sin medio puede apuntar al lector o al dispositivo, pero no basta para un diagnóstico definitivo.",
+        "undo": "Limítate a observar: no crees volúmenes, no asignes formatos y no elimines particiones."
+      },
+      {
+        "title": "5. Decide según el valor de los datos",
+        "action": "Si la unidad venía de otro sistema, verifica allí su compatibilidad con el sistema de archivos. Si los datos son importantes y no abre, detén las pruebas y pide recuperación que trabaje sobre una imagen, sin promesas de éxito.",
+        "expected": "Tienes una copia verificada o necesitas recuperación.",
+        "next": "Con datos sin copia, no ejecutes chkdsk /f, /r ni utilidades de reparación sobre el original. Si la unidad está vacía y quieres reutilizarla, sigue por separado las instrucciones del fabricante después de identificarla sin dudas.",
+        "undo": "No hay reversión garantizada para formateo o reparación de metadatos; por eso no se ejecutan aquí."
+      }
+    ],
+    "stop_conditions": [
+      "Detente ante señales físicas, capacidad incoherente o desconexiones repetidas.",
+      "No uses el disco del sistema como destino de una prueba y no publiques números de serie completos."
+    ],
+    "faq": [
+      {
+        "question": "¿CHKDSK recupera archivos?",
+        "answer": "Es una herramienta de comprobación/reparación del sistema de archivos, no una garantía de recuperación. Los parámetros de reparación escriben cambios; no son la primera opción sobre el único original de datos valiosos."
+      },
+      {
+        "question": "¿Cancelar el formato empeora el USB?",
+        "answer": "Cancelar el diálogo evita iniciar esa escritura. No arregla el fallo, pero conserva mejor la situación para diagnosticar o recuperar."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Microsoft Learn: CHKDSK y efectos de sus parámetros",
+        "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk"
+      },
+      {
+        "title": "Microsoft Learn: inicializar discos nuevos y advertencias sobre datos",
+        "url": "https://learn.microsoft.com/en-us/windows-server/storage/disk-management/initialize-new-disks"
+      }
+    ],
+    "updated": "2026-10-14",
+    "keywords": [
+      "El USB pide formatear: qué observar sin borrar tus archivos",
+      "almacenamiento"
+    ]
+  },
+  {
+    "slug": "chrome-error-certificado-fecha",
+    "category": "navegadores",
+    "title": "Chrome muestra ERR_CERT_DATE_INVALID: comprobar fecha sin saltar la advertencia",
+    "h1": "Chrome muestra ERR_CERT_DATE_INVALID: comprobar fecha sin saltar la advertencia",
+    "meta_description": "Distingue una hora incorrecta del equipo de un certificado vencido en la web y conserva la protección HTTPS.",
+    "summary": "Distingue una hora incorrecta del equipo de un certificado vencido en la web y conserva la protección HTTPS.",
+    "scope": [
+      "Chrome en un equipo personal; los menús del sistema para ajustar fecha varían.",
+      "No es una guía para aceptar certificados inválidos ni instalar certificados de terceros."
+    ],
+    "symptoms": [
+      "Chrome indica que el reloj está adelantado/atrasado o muestra ERR_CERT_DATE_INVALID.",
+      "La advertencia aparece en una web o en varias páginas HTTPS."
+    ],
+    "quick_checks": [
+      "No introduzcas contraseñas, datos de pago o códigos de verificación en la página con aviso.",
+      "Anota el código exacto: otros errores de certificado necesitan otro diagnóstico."
+    ],
+    "steps": [
+      {
+        "title": "1. Comprueba fecha, hora y zona horaria",
+        "action": "Compara la hora de tu equipo con la de un dispositivo fiable. En Windows ve a Configuración > Hora e idioma > Fecha y hora y revisa fecha, zona y sincronización. En un equipo administrado consulta a soporte si los ajustes están bloqueados.",
+        "expected": "La fecha coincide o detectas una diferencia grande.",
+        "next": "Corrige solo un desfase confirmado y recarga la web. Si ya era correcta, compara otras webs.",
+        "undo": "Anota ajustes previos. No cambies la fecha a propósito para hacer parecer válido un certificado vencido."
+      },
+      {
+        "title": "2. Compara varias webs HTTPS",
+        "action": "Abre dos páginas conocidas que no sean del mismo propietario. No necesitas iniciar sesión. Apunta si el error afecta a una o a todas.",
+        "expected": "Una sola web da el error, o varias lo muestran.",
+        "next": "Una sola: puede ser su certificado; continúa con otra red/dispositivo. Varias: revisa reloj, red y posible gestión corporativa.",
+        "undo": "La comparación no cambia la configuración del navegador."
+      },
+      {
+        "title": "3. Compara otro dispositivo o red de confianza",
+        "action": "Consulta la misma dirección en otro dispositivo con hora correcta. Si tienes otra red de confianza, prueba sin introducir datos personales. Evita redes públicas desconocidas.",
+        "expected": "El aviso sigue en dispositivos/redes distintos o aparece solo en una red.",
+        "next": "Si persiste en todos, avisa al responsable del sitio y espera. Si solo ocurre en una red, consulta al administrador o proveedor; no instales certificados para eliminar el aviso.",
+        "undo": "Vuelve a la red habitual y cierra la pestaña problemática."
+      },
+      {
+        "title": "4. Comprueba si hay portal de WiFi",
+        "action": "En una red de invitados abre el portal indicado por su responsable y confirma su dirección. Si no tienes esa dirección, pídela. No uses una web bancaria o el correo para forzar el portal ni aceptes excepciones HTTPS.",
+        "expected": "El portal legítimo permite acceso y la web segura vuelve a cargar, o el aviso continúa.",
+        "next": "Si continúa, conserva el aviso y evita utilizar la web hasta que el responsable lo resuelva.",
+        "undo": "Cerrar un portal no concede permisos nuevos; desconecta la red si no reconoces la página."
+      },
+      {
+        "title": "5. Actualiza Chrome por su canal oficial",
+        "action": "En Chrome abre Menú > Ayuda > Información de Google Chrome. Aplica una actualización ofrecida por el navegador y reinicia cuando puedas guardar tu trabajo. No descargues “reparadores de certificados”.",
+        "expected": "Chrome está actualizado y el resultado cambia o permanece.",
+        "next": "Si el aviso queda limitado a una web, informa URL, código y hora a su propietario. Si afecta a todas en tu equipo, solicita soporte con la comparación realizada.",
+        "undo": "Las actualizaciones de seguridad no se revierten para sortear un certificado. Mantén la protección activada."
+      }
+    ],
+    "stop_conditions": [
+      "Detente si te piden instalar un certificado desconocido, desactivar HTTPS o compartir credenciales.",
+      "Si el reloj vuelve a desajustarse tras cada apagado, consulta al fabricante en lugar de seguir cambiándolo para navegar."
+    ],
+    "faq": [
+      {
+        "question": "¿Borrar caché renueva un certificado vencido?",
+        "answer": "No. El certificado lo presenta el servidor o un intermediario de red. La caché no corrige su periodo de validez."
+      },
+      {
+        "question": "¿Puedo pulsar continuar de todos modos?",
+        "answer": "Esta guía no recomienda hacerlo. El aviso protege frente a conexiones cuya identidad no se ha validado; espera o usa el canal oficial del servicio."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Google Chrome: solucionar errores de conexión y certificados",
+        "url": "https://support.google.com/chrome/answer/95669?hl=es"
+      }
+    ],
+    "updated": "2026-10-14",
+    "keywords": [
+      "Chrome muestra ERR_CERT_DATE_INVALID: comprobar fecha sin saltar la advertencia",
+      "navegadores"
+    ]
+  },
+  {
+    "slug": "microfono-windows-11-permisos-entrada",
+    "category": "audio",
+    "title": "Micrófono en Windows 11: separar entrada, permisos y aplicación",
+    "h1": "Micrófono en Windows 11: separar entrada, permisos y aplicación",
+    "meta_description": "Usa el medidor de entrada para distinguir un micrófono sin señal de una aplicación que escucha otro dispositivo.",
+    "summary": "Usa el medidor de entrada para distinguir un micrófono sin señal de una aplicación que escucha otro dispositivo.",
+    "scope": [
+      "Windows 11, micrófono integrado, USB o auriculares conectados.",
+      "No cubre abrir el equipo ni retirar controladores. Los equipos de una organización pueden bloquear permisos."
+    ],
+    "symptoms": [
+      "La otra persona no te escucha en una llamada.",
+      "El medidor del sistema no se mueve o solo una aplicación falla."
+    ],
+    "quick_checks": [
+      "Comprueba el interruptor físico de silencio y el botón de mute de la aplicación.",
+      "No compartas una grabación privada para probar sonido; usa una frase breve sin datos personales."
+    ],
+    "steps": [
+      {
+        "title": "1. Revisa conexión y silencio físico",
+        "action": "Verifica que el micrófono esté conectado y no silenciado en el cable, auriculares o teclado. En una toma de 3,5 mm comprueba si es entrada combinada o requiere adaptador adecuado según el fabricante.",
+        "expected": "El indicador de silencio se apaga o la conexión sigue incierta.",
+        "next": "Si no conoces el conector, consulta el manual. No fuerces un puerto. Con conexión correcta, pasa al medidor.",
+        "undo": "Restaura el silencio al terminar si necesitas privacidad."
+      },
+      {
+        "title": "2. Observa el medidor de entrada de Windows",
+        "action": "Abre Configuración > Sistema > Sonido > Entrada. Selecciona el dispositivo por su nombre, no solo por “predeterminado”. Habla y observa la prueba/medidor disponible.",
+        "expected": "Hay señal en Windows, o no aparece señal.",
+        "next": "Con señal, ve a permisos y aplicación. Sin señal, revisa el volumen de entrada y prueba otra conexión directa compatible antes de tocar software.",
+        "undo": "Anota la entrada anterior y vuelve a ella si esta prueba no ayuda."
+      },
+      {
+        "title": "3. Revisa permisos solo para la aplicación necesaria",
+        "action": "Abre Configuración > Privacidad y seguridad > Micrófono. Comprueba el acceso general y el permiso de tu app. Las apps de Microsoft Store pueden aparecer con control individual; el permiso de aplicaciones de escritorio es global y Windows no permite retirarlo a cada una por separado en esa lista. Para webs revisa además el permiso por sitio del navegador. No habilites permisos por costumbre.",
+        "expected": "El acceso estaba bloqueado o ya permitido.",
+        "next": "Si estaba bloqueado, autoriza solo lo necesario y reinicia la app. Si es una política administrada, pide soporte.",
+        "undo": "Restaura el estado anterior si no necesitas el cambio. Desactivar el permiso global de aplicaciones de escritorio también puede bloquear otras apps; usa sus controles internos o permisos del navegador para limitar un sitio."
+      },
+      {
+        "title": "4. Selecciona la misma entrada dentro de la llamada",
+        "action": "En los ajustes de audio de la aplicación selecciona el nombre que produjo señal en Windows. En una web revisa también el permiso de micrófono del sitio junto a la barra de dirección y la entrada seleccionada por el navegador.",
+        "expected": "La prueba de audio de la app detecta voz, o solo el sistema lo hace.",
+        "next": "Si funciona la prueba pero no la llamada, revisa mute y conexión de esa sesión. Si no funciona, cierra otras apps que usan micrófono y prueba de nuevo.",
+        "undo": "Devuelve el ajuste previo si empeora; retira permisos a sitios que no uses."
+      },
+      {
+        "title": "5. Compara una app y un dispositivo",
+        "action": "Con permiso concedido, usa la Grabadora de sonido de Windows para una frase neutra. Si tienes otro micrófono compatible, compara sin instalar paquetes desconocidos. Cambia una cosa cada vez.",
+        "expected": "La grabadora funciona, o tampoco recoge sonido.",
+        "next": "Grabadora funciona: prioriza soporte de la app de llamadas. Ninguna app funciona con un micrófono pero otro sí: prioriza dispositivo/cable. Ninguno funciona: soporte de Windows/fabricante con los datos de entrada y permisos.",
+        "undo": "Elimina la grabación de prueba y restaura entrada/permisos que no necesitas."
+      }
+    ],
+    "stop_conditions": [
+      "Detente si tu organización controla los permisos.",
+      "No instales “actualizadores de drivers” ni habilites acceso remoto a desconocidos para esta prueba."
+    ],
+    "faq": [
+      {
+        "question": "¿Que Windows detecte el nombre significa que escucha?",
+        "answer": "No. El nombre confirma identificación del dispositivo, mientras el medidor permite observar si entra una señal."
+      },
+      {
+        "question": "¿Por qué funciona en la grabadora y falla en una web?",
+        "answer": "La web puede tener su propio permiso o elegir otra entrada. Esa diferencia reduce la probabilidad de un fallo físico, aunque no lo elimina por completo."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Microsoft: solucionar problemas de micrófono",
+        "url": "https://support.microsoft.com/en-us/windows/hardware/drivers/fix-microphone-problems"
+      },
+      {
+        "title": "Google Chrome: usar cámara y micrófono",
+        "url": "https://support.google.com/chrome/answer/2693767?hl=es"
+      }
+    ],
+    "updated": "2026-10-14",
+    "keywords": [
+      "Micrófono en Windows 11: separar entrada, permisos y aplicación",
+      "audio"
+    ]
+  },
+  {
+    "slug": "android-liberar-espacio-sin-borrar-datos",
+    "category": "android",
+    "title": "Android sin espacio: liberar almacenamiento con una copia comprobada",
+    "h1": "Android sin espacio: liberar almacenamiento con una copia comprobada",
+    "meta_description": "Distingue almacenamiento de memoria RAM y revisa descargas, archivos offline y caché sin borrar datos de aplicaciones a ciegas.",
+    "summary": "Distingue almacenamiento de memoria RAM y revisa descargas, archivos offline y caché sin borrar datos de aplicaciones a ciegas.",
+    "scope": [
+      "Android; ajustes y nombres dependen de versión y fabricante.",
+      "Esta guía no pide restablecer el teléfono, rootearlo ni instalar limpiadores."
+    ],
+    "symptoms": [
+      "El teléfono avisa de almacenamiento insuficiente.",
+      "Una app no se actualiza o no puede guardar archivos."
+    ],
+    "quick_checks": [
+      "Conecta el teléfono a corriente si vas a copiar muchos archivos.",
+      "Comprueba que una copia exista y abra antes de borrar el original. La sincronización puede propagar borrados."
+    ],
+    "steps": [
+      {
+        "title": "1. Identifica qué está lleno",
+        "action": "Abre Ajustes > Almacenamiento (o el menú equivalente del fabricante). Anota espacio libre y las categorías más grandes. No confundas el uso de RAM con los GB del almacenamiento.",
+        "expected": "Fotos, vídeos, apps o archivos ocupan la mayor parte.",
+        "next": "Elige una categoría concreta. Si “Sistema” es grande, no borres carpetas desconocidas ni uses acceso avanzado; consulta al fabricante.",
+        "undo": "Esta observación no cambia archivos."
+      },
+      {
+        "title": "2. Revisa Descargas con calma",
+        "action": "En la app de archivos abre Descargas y ordena por tamaño si ofrece la opción. Reconoce cada archivo antes de seleccionarlo: documentos, instaladores o vídeos descargados. No borres una carpeta entera por su nombre.",
+        "expected": "Encuentras archivos prescindibles o que quieres conservar.",
+        "next": "Copia los importantes a un destino que controlas y abre la copia. Elimina solo archivos reconocidos que ya no necesitas.",
+        "undo": "El borrado puede ser permanente o pasar a una papelera según la app; comprueba cuál antes de confirmar."
+      },
+      {
+        "title": "3. Retira contenido offline desde su aplicación",
+        "action": "En música, mapas y vídeo abre Descargas/offline dentro de la propia app. Elimina desde allí contenido que puedas descargar otra vez, considerando tu acceso a Internet y licencia.",
+        "expected": "Se recupera espacio sin borrar tu cuenta o documentos de otras apps.",
+        "next": "Vuelve a Almacenamiento y observa el espacio libre. Si sigue siendo insuficiente, revisa fotos y vídeos.",
+        "undo": "Podrás volver a descargar solo contenido que siga disponible y al que mantengas acceso."
+      },
+      {
+        "title": "4. Comprueba la copia de fotos antes de eliminarlas",
+        "action": "Si usas Google Fotos, confirma que la cuenta correcta tenga copia completada. Abre varias fotos recientes desde otro dispositivo o la web de esa cuenta. Lee la diferencia entre “Liberar espacio” y eliminar fotos de tu biblioteca.",
+        "expected": "La copia está disponible, o todavía no se ha subido.",
+        "next": "Con copia verificada usa la función de liberar espacio del dispositivo si la ofrece. Sin copia, conserva los originales o copia manualmente primero.",
+        "undo": "Las fotos quitadas del dispositivo dependerán de tu copia y conexión. Borrarlas de la biblioteca puede afectar la nube; no es la misma operación."
+      },
+      {
+        "title": "5. Diferencia caché de datos de la app",
+        "action": "En Ajustes > Apps > [aplicación] > Almacenamiento, revisa las opciones. Borrar caché elimina datos temporales que suelen regenerarse. “Borrar almacenamiento/datos” puede cerrar sesión y borrar contenido local; no lo uses como equivalente.",
+        "expected": "La caché ocupa una cantidad relevante o es pequeña.",
+        "next": "Si decides borrar solo caché, reabre la app y comprueba qué regeneró. No repitas indefinidamente si recupera pocos MB; la causa principal puede estar en otra categoría.",
+        "undo": "La caché se vuelve a crear. Los datos locales eliminados pueden no recuperarse sin una copia."
+      },
+      {
+        "title": "6. Repite la operación que fallaba y registra el cambio",
+        "action": "Anota espacio libre antes/después y prueba una actualización o guardado. Conserva un margen para que el sistema y las apps trabajen; no hay un umbral universal que garantice éxito.",
+        "expected": "La operación funciona, o sigue fallando aun con espacio libre.",
+        "next": "Si funciona, programa revisión periódica de descargas. Si persiste, guarda el mensaje exacto y consulta el soporte de esa app; no asumas que todo error sigue siendo de espacio.",
+        "undo": "No elimines más datos para perseguir un error que ya cambió de naturaleza."
+      }
+    ],
+    "stop_conditions": [
+      "Detente si no puedes verificar una copia de archivos importantes.",
+      "No borres datos de autenticadores, mensajería o apps de trabajo sin revisar su procedimiento específico de copia y restauración."
+    ],
+    "faq": [
+      {
+        "question": "¿Borrar caché equivale a borrar datos?",
+        "answer": "No. Son controles diferentes. Borrar datos puede eliminar información local de la aplicación y la sesión; leer el aviso es esencial."
+      },
+      {
+        "question": "¿Una papelera sirve como copia de seguridad?",
+        "answer": "No. Puede caducar, vaciarse o sincronizar borrados. Una copia comprobada vive en otro destino y se puede abrir."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Google Android: liberar espacio y distinguir caché/datos",
+        "url": "https://support.google.com/android/answer/7431795?hl=es"
+      },
+      {
+        "title": "Google Fotos: liberar espacio del dispositivo",
+        "url": "https://support.google.com/photos/answer/6128843?hl=es"
+      }
+    ],
+    "updated": "2026-10-14",
+    "keywords": [
+      "Android sin espacio: liberar almacenamiento con una copia comprobada",
+      "android"
+    ]
+  },
+  {
+    "slug": "juego-steam-no-inicia-diagnostico",
+    "category": "gaming",
+    "title": "Un juego de Steam no inicia: verificar archivos y aislar cambios",
+    "h1": "Un juego de Steam no inicia: verificar archivos y aislar cambios",
+    "meta_description": "Separa un fallo de un juego de un fallo del cliente y verifica archivos sin recurrir a DLL sueltas o desactivar protección.",
+    "summary": "Separa un fallo de un juego de un fallo del cliente y verifica archivos sin recurrir a DLL sueltas o desactivar protección.",
+    "scope": [
+      "Steam en PC con una copia legítima del juego.",
+      "Mods, anti-cheat y guardados tienen reglas propias; consulta también al editor del juego."
+    ],
+    "symptoms": [
+      "Steam cambia a “En ejecución” y vuelve a “Jugar”.",
+      "Aparece un error del juego o un cierre antes del menú."
+    ],
+    "quick_checks": [
+      "Copia por separado los guardados locales si conoces su ubicación, según el editor; la nube no es una garantía.",
+      "Anota el error exacto, juego y cambio reciente. No publiques claves, tokens o rutas con datos personales.",
+      "Antes de verificar archivos, conserva copias/instrucciones de mods y configuración local: Steam puede reemplazar archivos modificados."
+    ],
+    "steps": [
+      {
+        "title": "1. Comprueba si falla un juego o todo Steam",
+        "action": "Abre otro juego instalado si ya dispones de él y comprueba si Steam puede acceder a la Biblioteca. No compres ni instales otro juego solo para esta comparación.",
+        "expected": "Solo falla un título, o el cliente/varios juegos también fallan.",
+        "next": "Un título: trabaja sobre ese juego. Todo el cliente: consulta soporte de Steam y su conexión antes de reparar archivos individuales.",
+        "undo": "No cambia archivos ni configuración."
+      },
+      {
+        "title": "2. Guarda el mensaje y revisa requisitos oficiales",
+        "action": "Anota el texto/código del diálogo y compara sistema operativo, GPU y memoria con la ficha oficial del juego. Si empezó tras una actualización, consulta anuncios del editor; no atribuyas automáticamente el fallo al driver.",
+        "expected": "Encuentras un requisito no cumplido o un problema reconocido.",
+        "next": "Si no cumples requisitos, no fuerces parches desconocidos. Si todo coincide, verifica archivos desde Steam.",
+        "undo": "Solo recopilas evidencia; no hay cambios que deshacer."
+      },
+      {
+        "title": "3. Verifica integridad de los archivos",
+        "action": "Cierra el juego. Si usas mods o configuración modificada, conserva una copia y consulta sus instrucciones antes de seguir. En Biblioteca > clic derecho sobre el juego > Propiedades > Archivos instalados > Verificar integridad. Espera a que termine y no ejecutes a la vez otra tarea pesada de disco.",
+        "expected": "Steam verifica o vuelve a descargar archivos; puede indicar archivos que no se validan.",
+        "next": "Reintenta una vez y registra el resultado. Steam explica que algunos archivos locales de configuración pueden no validarse; ese aviso por sí solo no demuestra daño.",
+        "undo": "La verificación puede reemplazar modificaciones locales. Si usas mods, conserva sus instrucciones y copia antes de este paso."
+      },
+      {
+        "title": "4. Aísla opciones que hayas añadido",
+        "action": "Anota las opciones de lanzamiento personalizadas. Si tú las configuraste, retíralas temporalmente y prueba. Desactiva un mod o superposición siguiendo el procedimiento del juego, de uno en uno; no elimines carpetas a ciegas.",
+        "expected": "El juego inicia sin una opción/mod, o falla igual.",
+        "next": "Si mejora, restaura de uno en uno para identificar el conflicto. Si no mejora, devuelve lo retirado y prepara un reporte.",
+        "undo": "Restaura exactamente las opciones anotadas. No cambies anti-cheat, antivirus ni permisos globales."
+      },
+      {
+        "title": "5. Envía un reporte útil al editor",
+        "action": "Incluye versión de Windows, GPU, título, error, momento del cierre y resultado de la verificación. Usa el enlace de soporte de la ficha del juego o su web oficial. Si se pide un registro, revísalo para ocultar datos personales antes de enviarlo.",
+        "expected": "El soporte tiene una secuencia reproducible y las comparaciones realizadas.",
+        "next": "Sigue instrucciones oficiales específicas. Instala runtimes solo desde Microsoft/editor cuando una dependencia concreta lo justifique; no descargues DLL sueltas ni reinstales Windows como primera respuesta.",
+        "undo": "Conserva tu copia de guardados y vuelve a tus ajustes previos si no produjeron mejora."
+      }
+    ],
+    "stop_conditions": [
+      "Detente si una supuesta solución pide desactivar seguridad, descargar cracks o sustituir DLL del sistema.",
+      "Si el fallo empezó con mods, conserva su estado y verifica qué cambios reemplaza Steam antes de continuar."
+    ],
+    "faq": [
+      {
+        "question": "¿Verificar archivos borra todos mis guardados?",
+        "answer": "No debe asumirse ni que los borre ni que los proteja. Su ubicación depende del juego, y la verificación puede reemplazar archivos modificados en la instalación. Haz copia de tus guardados según el editor."
+      },
+      {
+        "question": "¿Sirve ejecutar siempre como administrador?",
+        "answer": "No es una solución general y concede permisos elevados. Un fallo de inicio necesita evidencia sobre su causa antes de cambiar privilegios."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Steam Support: verificar integridad de archivos",
+        "url": "https://help.steampowered.com/en/faqs/view/0C48-FCBD-DA71-93EB"
+      }
+    ],
+    "updated": "2026-10-14",
+    "keywords": [
+      "Un juego de Steam no inicia: verificar archivos y aislar cambios",
+      "gaming"
+    ]
+  },
+  {
+    "slug": "windows-update-atascado-registro-seguro",
+    "category": "windows",
+    "title": "Windows Update no avanza: observar estado antes de reiniciar",
+    "h1": "Windows Update no avanza: observar estado antes de reiniciar",
+    "meta_description": "Distingue descarga lenta de instalación en curso, guarda el código y usa el solucionador de Windows antes de borrar carpetas del sistema.",
+    "summary": "Distingue descarga lenta de instalación en curso, guarda el código y usa el solucionador de Windows antes de borrar carpetas del sistema.",
+    "scope": [
+      "Windows 11 en un equipo personal. Para Windows 10 consulta el soporte y la cobertura vigentes de tu edición.",
+      "No incluye apagar a la fuerza un equipo mientras instala ni borrar SoftwareDistribution."
+    ],
+    "symptoms": [
+      "Un porcentaje parece detenido o vuelve a aparecer un error.",
+      "La actualización pide reinicio repetidamente."
+    ],
+    "quick_checks": [
+      "Conecta alimentación estable y guarda documentos si aún tienes acceso al escritorio.",
+      "Anota porcentaje, hora y código; un porcentaje fijo durante un rato no prueba un bloqueo."
+    ],
+    "steps": [
+      {
+        "title": "1. Identifica en qué fase está",
+        "action": "Si puedes usar el escritorio, abre Configuración > Windows Update y lee si está descargando, instalando o esperando reinicio. Si ves una pantalla de actualización durante el arranque, no la interrumpas para abrir menús.",
+        "expected": "Tienes una fase concreta y no solo un porcentaje.",
+        "next": "Descarga: revisa red/espacio. Espera reinicio: programa uno con archivos guardados. Instalación durante arranque: mantén energía y evita apagado forzado.",
+        "undo": "Observar el estado no cambia la actualización."
+      },
+      {
+        "title": "2. Comprueba red y espacio desde el escritorio",
+        "action": "Cuando el escritorio esté disponible, abre una web conocida y revisa Configuración > Sistema > Almacenamiento. Anota cuánto queda libre. No borres carpetas del sistema para liberar espacio.",
+        "expected": "La red funciona y hay espacio, o detectas un problema previo.",
+        "next": "Corrige el problema de red con su diagnóstico separado. Para espacio, elimina solo contenido reconocido con copia. Después vuelve a Windows Update.",
+        "undo": "No cambies la red durante una descarga si no hace falta y conserva tus archivos importantes."
+      },
+      {
+        "title": "3. Registra el historial y el código",
+        "action": "En Windows Update > Historial de actualizaciones, copia el nombre o KB que falla y el código completo. Comprueba si solo falla una actualización o varias. Una captura con tu usuario debe ocultar datos personales antes de compartirla.",
+        "expected": "Puedes identificar un KB/código y cuándo ocurrió.",
+        "next": "Busca ese KB en soporte oficial o en las notas del lanzamiento. No apliques una receta para otro código aunque se parezca.",
+        "undo": "Leer historial no modifica el sistema."
+      },
+      {
+        "title": "4. Usa el diagnóstico incorporado",
+        "action": "En Windows 11 ve a Configuración > Sistema > Solucionar problemas > Otros solucionadores y busca Windows Update; versiones recientes pueden abrir la app Obtener ayuda. Lee sus propuestas antes de aceptar cambios.",
+        "expected": "El diagnóstico identifica una acción concreta o no resuelve el fallo.",
+        "next": "Acepta solo una acción que entiendas y registra su descripción. Reintenta la actualización una vez después de los cambios/reinicio indicados.",
+        "undo": "El diagnóstico puede cambiar ajustes; conserva su informe. No se puede prometer una reversión única para todas sus acciones."
+      },
+      {
+        "title": "5. Decide cuándo escalar",
+        "action": "Si vuelve el mismo código, reúne KB, edición/versión de Windows, espacio libre y resultado del diagnóstico. Consulta las incidencias conocidas de la versión y el soporte oficial. En equipos de empresa deriva al administrador.",
+        "expected": "Tienes un fallo repetible o hay una incidencia conocida.",
+        "next": "Prioriza la solución específica del KB/versión. No elimines archivos del sistema ni ejecutes DISM/SFC en cadena sin necesidad documentada. Si hay riesgo para datos, copia antes de una reparación mayor.",
+        "undo": "Evita cambios adicionales y conserva evidencia del estado anterior."
+      }
+    ],
+    "stop_conditions": [
+      "Si solo ves la pantalla de instalación, esta guía no recomienda forzar apagado ni garantiza un tiempo máximo.",
+      "Detente ante pérdida de energía, errores de disco o un equipo administrado; pide soporte según el caso."
+    ],
+    "faq": [
+      {
+        "question": "¿Existe un tiempo fijo para decir que se ha bloqueado?",
+        "answer": "No. Tamaño de actualización, almacenamiento y equipo cambian los tiempos. Una comparación de estado y registros es más útil que un límite universal inventado."
+      },
+      {
+        "question": "¿Debo borrar SoftwareDistribution?",
+        "answer": "No como primer paso. Cambia datos de Windows Update y necesita un procedimiento específico con servicios y contexto; esta guía prioriza observación y el diagnóstico oficial."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Microsoft: solucionar problemas al actualizar Windows",
+        "url": "https://support.microsoft.com/en-us/windows/deployment/updates-lifecycle/troubleshoot-problems-updating-windows"
+      },
+      {
+        "title": "Microsoft Learn: estado de versiones de Windows",
+        "url": "https://learn.microsoft.com/en-us/windows/release-health/"
+      }
+    ],
+    "updated": "2026-10-14",
+    "keywords": [
+      "Windows Update no avanza: observar estado antes de reiniciar",
+      "windows"
+    ]
+  },
+  {
+    "slug": "monitor-externo-sin-senal-pasos",
+    "category": "graficos",
+    "title": "Monitor externo sin señal: comprobar entrada, cable y modo de pantalla",
+    "h1": "Monitor externo sin señal: comprobar entrada, cable y modo de pantalla",
+    "meta_description": "Separa la alimentación del monitor del enlace de vídeo y cambia una variable cada vez antes de reinstalar drivers.",
+    "summary": "Separa la alimentación del monitor del enlace de vídeo y cambia una variable cada vez antes de reinstalar drivers.",
+    "scope": [
+      "Windows 11 con monitor externo HDMI, DisplayPort o USB-C.",
+      "USB-C no implica vídeo: el puerto, cable y adaptador deben admitirlo según sus especificaciones."
+    ],
+    "symptoms": [
+      "El monitor enciende, pero indica “Sin señal”.",
+      "La pantalla del portátil funciona y la externa no aparece."
+    ],
+    "quick_checks": [
+      "No abras monitor, fuente o equipo para estas pruebas.",
+      "Anota qué puerto, cable y adaptador usas; evita cambiar todos simultáneamente."
+    ],
+    "steps": [
+      {
+        "title": "1. Comprueba el propio monitor",
+        "action": "Enciéndelo y abre su menú con los botones físicos. Comprueba si el menú se ve y qué entrada está seleccionada. Elige la entrada correspondiente al cable conectado.",
+        "expected": "Ves el menú y la entrada coincide, o el monitor no muestra menú.",
+        "next": "Sin menú, revisa alimentación según el manual y soporte del monitor. Con menú, revisa el enlace de vídeo.",
+        "undo": "Si cambiaste entrada, puedes volver a la anterior desde el mismo menú."
+      },
+      {
+        "title": "2. Revisa un enlace directo compatible",
+        "action": "Conecta firmemente el cable externo sin forzarlo. Si hay una base o hub, prueba conexión directa solo si tu equipo y monitor tienen puertos compatibles. Para USB-C consulta si el puerto admite modo de vídeo y si el cable lo soporta.",
+        "expected": "La conexión directa funciona, o sigue sin señal.",
+        "next": "Si funciona, prioriza base/adaptador/cable y sus especificaciones. Si falla, comprueba el modo de pantalla de Windows.",
+        "undo": "Devuelve el cableado previo si no mejora. No conectes adaptadores incompatibles por ensayo."
+      },
+      {
+        "title": "3. Comprueba el modo de proyección",
+        "action": "Desde la pantalla que funciona pulsa Win+P y selecciona Duplicar o Extender. Evita “Solo segunda pantalla” mientras no tienes imagen en ella. En Configuración > Sistema > Pantalla comprueba si aparece otra pantalla.",
+        "expected": "Windows detecta el monitor y muestra imagen, lo detecta sin imagen o no lo detecta.",
+        "next": "Con imagen, revisa resolución si hace falta. Detectado sin imagen: prueba resolución recomendada. No detectado: compara cable/puerto.",
+        "undo": "Pulsa Win+P y vuelve a “Solo pantalla de PC” si necesitas recuperar el estado anterior."
+      },
+      {
+        "title": "4. Usa una resolución admitida",
+        "action": "Si Windows detecta el monitor, selecciónalo en Configuración > Sistema > Pantalla y elige su resolución recomendada. Cambia solo un ajuste. Si se pierde imagen, espera el diálogo de confirmación/reversión y no confirmes a ciegas.",
+        "expected": "El monitor muestra imagen con una configuración admitida.",
+        "next": "Si mejora, conserva el ajuste y consulta el manual antes de aumentar frecuencia. Si no, vuelve al anterior y compara cable.",
+        "undo": "No confirmes un ajuste que no puedes ver; usa la reversión ofrecida por Windows o vuelve a tu configuración anotada."
+      },
+      {
+        "title": "5. Compara un cable o pantalla ya disponible",
+        "action": "Prueba un cable compatible que sabes que funciona, o conecta el monitor a otro equipo compatible. Haz una sola comparación cada vez para conservar la evidencia.",
+        "expected": "El fallo sigue al cable/monitor o queda en el equipo original.",
+        "next": "Si sigue al cable, sustitúyelo por uno compatible. Si queda en el equipo, consulta fabricante con puertos, modelo y resultado de Win+P. Si empezó tras driver, usa el procedimiento oficial específico antes de cambiarlo.",
+        "undo": "Restaura el montaje habitual; no desinstales controladores como parte de una prueba de cable."
+      }
+    ],
+    "stop_conditions": [
+      "Detente ante olor, chispas, cable deteriorado o daño por líquido.",
+      "No abras la fuente del monitor ni fuerces conectores; consulta servicio técnico ante síntomas físicos."
+    ],
+    "faq": [
+      {
+        "question": "¿Todo USB-C transmite vídeo?",
+        "answer": "No. El conector no especifica por sí solo las capacidades del puerto o cable. Verifica soporte de vídeo/DisplayPort o Thunderbolt en las especificaciones de ambos."
+      },
+      {
+        "question": "¿“Sin señal” significa que murió la tarjeta gráfica?",
+        "answer": "No. Entrada del monitor, cable, adaptador y modo de proyección pueden producir ese mensaje. Las comparaciones ayudan a aislarlos."
+      }
+    ],
+    "sources": [
+      {
+        "title": "Microsoft: solucionar conexiones de monitor externo",
+        "url": "https://support.microsoft.com/en-us/windows/hardware/display-graphics/troubleshoot-external-monitor-connections-in-windows"
+      },
+      {
+        "title": "Microsoft Learn: conexiones USB-C y modo alternativo",
+        "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/ucsi"
+      }
+    ],
+    "updated": "2026-10-14",
+    "keywords": [
+      "Monitor externo sin señal: comprobar entrada, cable y modo de pantalla",
+      "graficos"
+    ]
+  }
+]

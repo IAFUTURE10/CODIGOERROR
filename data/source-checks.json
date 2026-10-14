@@ -1,0 +1,80 @@
+[
+  {
+    "url": "https://help.steampowered.com/en/faqs/view/0C48-FCBD-DA71-93EB",
+    "status": 200,
+    "final_url": "https://help.steampowered.com/en/faqs/view/0C48-FCBD-DA71-93EB",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/ucsi",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/ucsi",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/storage/disk-management/initialize-new-disks",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/en-us/windows-server/storage/disk-management/initialize-new-disks",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows/release-health/",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/en-us/windows/release-health/",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://support.google.com/android/answer/7431795?hl=es",
+    "status": 200,
+    "final_url": "https://support.google.com/android/answer/7431795?hl=es",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://support.google.com/chrome/answer/2693767?hl=es",
+    "status": 200,
+    "final_url": "https://support.google.com/chrome/answer/2693767?hl=es",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://support.google.com/chrome/answer/95669?hl=es",
+    "status": 200,
+    "final_url": "https://support.google.com/chrome/answer/95669?hl=es",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://support.google.com/photos/answer/6128843?hl=es",
+    "status": 200,
+    "final_url": "https://support.google.com/photos/answer/6128843?hl=es",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/windows/deployment/updates-lifecycle/troubleshoot-problems-updating-windows",
+    "status": 200,
+    "final_url": "https://support.microsoft.com/en-us/windows/deployment/updates-lifecycle/troubleshoot-problems-updating-windows",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/windows/experience/connectivity-networking/fix-wi-fi-connection-issues-in-windows",
+    "status": 200,
+    "final_url": "https://support.microsoft.com/en-us/windows/experience/connectivity-networking/fix-wi-fi-connection-issues-in-windows",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/windows/hardware/display-graphics/troubleshoot-external-monitor-connections-in-windows",
+    "status": 200,
+    "final_url": "https://support.microsoft.com/en-us/windows/hardware/display-graphics/troubleshoot-external-monitor-connections-in-windows",
+    "checked": "2026-10-14"
+  },
+  {
+    "url": "https://support.microsoft.com/en-us/windows/hardware/drivers/fix-microphone-problems",
+    "status": 200,
+    "final_url": "https://support.microsoft.com/en-us/windows/hardware/drivers/fix-microphone-problems",
+    "checked": "2026-10-14"
+  }
+]
